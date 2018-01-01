@@ -12,7 +12,7 @@ public class TestCustomException {
 
 	public static void main(String args[]) {
 		Scanner input=new Scanner(System.in);
-		validate(10);
+		validate(input.nextInt());
 		}
 	}
 

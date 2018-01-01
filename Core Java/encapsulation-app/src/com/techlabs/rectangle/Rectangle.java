@@ -1,5 +1,9 @@
 package com.techlabs.rectangle;
 
+import com.techlabs.exercise.NeedRefactory;
+
+
+
 public class Rectangle {
 	private int width;
 	private int height;
@@ -13,11 +17,11 @@ public class Rectangle {
 		else
 			return 1;
 	}
-
+	@NeedRefactory
 	public void setWidth(int pwidth) {
 		width = checkIfValid(pwidth);
 	}
-
+	@NeedRefactory
 	public void setHeight(int pheight) {
 		height = checkIfValid(pheight);
 	}

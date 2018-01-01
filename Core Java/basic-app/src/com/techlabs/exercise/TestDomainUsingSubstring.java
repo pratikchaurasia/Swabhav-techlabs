@@ -1,4 +1,4 @@
-package com.techlabs.array;
+package com.techlabs.exercise;
 
 public class TestDomainUsingSubstring {
 	public static void main(String args[]) {

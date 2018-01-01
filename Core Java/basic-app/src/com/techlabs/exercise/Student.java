@@ -1,4 +1,4 @@
-package com.techlabs.array;
+package com.techlabs.exercise;
 
 public class Student {
 	private String fName = "Pratik";
@@ -9,9 +9,11 @@ public class Student {
 	private String dob = "8th November 1996";
 	private String moblieNo = "7507587701";
 
+
 	public String buildResume() {
-		String resume=fName+" "+mName+" "+lName+"\n"+address+"\n"+email+"\n"+dob;
+		String resume=fName+" "+mName+" "+lName+"\n"+address+"\n"+email+"\n"+dob+"\n"+moblieNo;
 		return resume;
+
 
 	}
 }

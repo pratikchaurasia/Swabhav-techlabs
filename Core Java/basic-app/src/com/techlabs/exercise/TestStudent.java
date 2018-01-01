@@ -1,4 +1,5 @@
-package com.techlabs.array;
+package com.techlabs.exercise;
+
 
 public class TestStudent {
 	public static void main(String args[]) {

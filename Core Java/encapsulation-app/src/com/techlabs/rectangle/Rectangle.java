@@ -5,10 +5,10 @@ public class Rectangle {
 	private int height;
 	private String borderColor;
 
-	public int checkIfValid(int param) {
-		if (param > 1 && param <= 100)
-			return param;
-		else if (param > 100)
+	public int checkIfValid(int side) {
+		if (side > 1 && side <= 100)
+			return side;
+		else if (side > 100)
 			return 100;
 		else
 			return 1;
@@ -30,22 +30,21 @@ public class Rectangle {
 		return width;
 	}
 
-	public int calcArea() {
-		int area = width * height;
-		return area;
-	}
-
 	public void setBorderColor(String bColor) {
 		if (bColor.equalsIgnoreCase("red") || bColor.equalsIgnoreCase("blue")
 				|| bColor.equalsIgnoreCase("green"))
 			borderColor = bColor;
 		else
 			borderColor = "Red";
-
 	}
 
 	public String getBorderColor() {
 		return borderColor;
+	}
+
+	public int calcArea() {
+		int area = width * height;
+		return area;
 	}
 
 }

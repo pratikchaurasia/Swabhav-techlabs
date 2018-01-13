@@ -10,7 +10,7 @@ public class TestBoxSerializable {
 		myBox.setHeight(20);
 		myBox.print();
 		try {
-			FileOutputStream fileOutput = new FileOutputStream("foo.ser");
+			FileOutputStream fileOutput = new FileOutputStream("foo.txt");
 			ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 			objectOutput.writeObject(myBox);
 			objectOutput.close();

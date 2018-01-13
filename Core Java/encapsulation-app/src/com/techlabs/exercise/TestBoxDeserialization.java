@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 public class TestBoxDeserialization {
 	public static void main(String args[]) {
 		try{
-		ObjectInputStream input=new ObjectInputStream(new FileInputStream("foo.ser"));
+		ObjectInputStream input=new ObjectInputStream(new FileInputStream("foo.txt"));
 		Box box=(Box) input.readObject();
 		
 		box.print();

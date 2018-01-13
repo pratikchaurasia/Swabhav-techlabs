@@ -33,15 +33,18 @@ public class Player {
 	}
 
 	public Player whoIsElder(Player player) {
-		if (this.getAge() > player.getAge())
-			return this;
-		else
-			return player;
+		return (this.getAge() > player.getAge()?this:player);
 	}
 
 	@Override
 	public String toString() {
 		return ("Id :" + id + "\nName : " + name + "\nAge : " + age);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.getId() == ((Player) obj).getId();
+
 	}
 
 }

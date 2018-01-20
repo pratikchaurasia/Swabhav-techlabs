@@ -1,13 +1,17 @@
 package com.techlabs.student;
 
+import java.util.ArrayList;
+
 public class PrintStudentDetails {
 
-	void printDetails(GetStudentDetails studentDetails, int noOfStudents) {
-		for (int i = 0; i < noOfStudents; i++) {
-			System.out.println("First Name :" + studentDetails.fName.get(i));
-			System.out.println("Last Name :" + studentDetails.lName.get(i));
-			System.out.println("Address :" + studentDetails.address.get(i));
+	void printDetails(ArrayList<GetStudentDetails> studentRecord) {
+		for (GetStudentDetails student : studentRecord) { 
+			System.out.println("First Name :" + student.getfName());
+			System.out.println("Last Name :" + student.getlName());
+			System.out.println("Address :" + student.getAddress());
+			System.out.println();
 
 		}
 	}
 }
+ 

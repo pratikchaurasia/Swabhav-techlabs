@@ -29,7 +29,7 @@ public class Player {
 	}
 
 	public void setAge(int age) {
-		age = age;
+		this.age = age;
 	}
 
 	public Player whoIsElder(Player player) {

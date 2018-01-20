@@ -6,14 +6,14 @@ public class Student {
 	private static  int mark1;
 	private static int mark2;
 	
-	Student(String name, int roll, int marks1, int marks2)
+	public Student(String name, int roll, int marks1, int marks2)
 	{
 		this.name=name;
 		roll_no=roll;
 		mark1 = marks1;
 		mark2 = marks2;
 	}
-	void display()
+	public void display()
 	{
 		System.out.println ("Name of Student: "+name);
 		System.out.println ("Roll No. of Student: "+roll_no);

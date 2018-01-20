@@ -1,6 +1,8 @@
 package com.techlabs.exercise;
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,5 +37,8 @@ public class StudentResumeBuilder {
 		fileWriter.write(htmlFileContent);
 		fileWriter.close();
 		bufferReader.close();
+		File file= new File(defaultPath + resumeFileName);
+		Desktop.getDesktop().browse(file.toURI());
+		
 	}
 }

@@ -1,7 +1,7 @@
 package com.techlabs.assignment4;
 
 public class Result extends Student implements Exam{
-	Result(String name, int roll, int mark1, int mark2)
+	public Result(String name, int roll, int mark1, int mark2)
 	{
 		super(name,roll,mark1,mark2);
 	}

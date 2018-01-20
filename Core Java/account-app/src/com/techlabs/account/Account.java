@@ -6,6 +6,8 @@ public class Account {
 	private double balance;
 	
 	private static int count = 0;
+	private static int noOfDeposits=0;
+	private static int noOfWithdrawls=0;
 	private static final double MINIMUM_BAl = 500.0;
 
 	public Account(int accountNo, String name, double balance) {
@@ -28,12 +30,14 @@ public class Account {
 
 	public void deposit(double amount) {
 		balance = balance + amount;
+		noOfDeposits++;
 	}
 
 	public void withdraw(double amount) {
 		if (balance - amount > MINIMUM_BAl) {
 			balance = balance - amount;
-		}
+			noOfWithdrawls++;
+		}	
 	}
 
 	public int getAccNo() {
@@ -54,5 +58,11 @@ public class Account {
 
 	public static int getHeadCount() {
 		return count;
+	}
+	public static int getNoOfDeposits(){
+		return noOfDeposits;
+	}
+	public static int getNoOfWithdraws(){
+		return noOfWithdrawls;
 	}
 }

@@ -1,28 +1,19 @@
 package com.techlabs.student;
 
-import java.awt.Desktop;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Student {
+public class Student{
 	Scanner input = new Scanner(System.in);
-	GetStudentDetails studentDetails = new GetStudentDetails();
-	PrintStudentDetails printData = new PrintStudentDetails();
-	private static ArrayList<GetStudentDetails> studentRecord = new ArrayList<GetStudentDetails>();
-	private final String defaultPath = "src//com//techlabs//student//buildresume//";
+	StudentStore studentDetails = new StudentStore();
+	StudentUI printData = new StudentUI();
+	private static ArrayList<StudentStore> studentRecord = new ArrayList<StudentStore>();
+
 
 	public void menu() throws IOException, ClassNotFoundException {
-		deserializeObject();
+		studentRecord=studentDetails.deserializeObject(studentRecord);
 		int valid = 1;
 		while (valid != 0) {
 			System.out
@@ -31,16 +22,16 @@ public class Student {
 			String response = input.nextLine();
 			switch (response) {
 			case "add":
-				studentRecord = studentDetails.getDetails();
-				serializeObject();
+				getDetails();
+				studentDetails.serializeObject(studentRecord);
 				break;
 
 			case "display":
-				printData.printDetails(studentRecord);
+				printDetails(studentRecord);
 				break;
 
 			case "build resume":
-				buildResume();
+				printData.buildResume(studentRecord);
 				break;
 			case "exit":
 				valid = 0;
@@ -54,46 +45,30 @@ public class Student {
 
 	}
 
-	public void serializeObject() throws IOException, FileNotFoundException {
-		FileOutputStream fileOutput = new FileOutputStream("foo.txt");
-		ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-		objectOutput.writeObject(studentRecord);
-		objectOutput.close();
+	public void getDetails() throws IOException {
+		StudentStore student = new StudentStore();
+
+		System.out.println("Enter The First Name");
+		student.setFName(input.nextLine());
+
+		System.out.println("Enter The Last Name");
+		student.setLName(input.nextLine());
+
+		System.out.println("Enter The Address");
+		student.setAddress(input.nextLine());
+
+		studentRecord.add(student);
 	}
 
-	@SuppressWarnings("unchecked")
-	public void deserializeObject() throws FileNotFoundException, IOException,
-			ClassNotFoundException {
-		ObjectInputStream input = new ObjectInputStream(new FileInputStream(
-				"foo.txt"));
-		studentRecord = (ArrayList<GetStudentDetails>) input.readObject();
-		input.close();
 
-	}
+	void printDetails(ArrayList<StudentStore> studentRecord) {
+		for (StudentStore student : studentRecord) {
+			System.out.println("First Name :" + student.getfName());
+			System.out.println("Last Name :" + student.getlName());
+			System.out.println("Address :" + student.getAddress());
+			System.out.println();
 
-	public void buildResume() throws IOException {
-		for (GetStudentDetails student : studentRecord) {
-			BufferedReader bufferReader = new BufferedReader(new FileReader(
-					defaultPath + "resume.html"));
-			String currentLine = "", htmlFileContent = "";
-
-			while ((currentLine = bufferReader.readLine()) != null) {
-				htmlFileContent = htmlFileContent + currentLine + "\n";
-			}
-
-			htmlFileContent = htmlFileContent.replace("$fName",
-					student.getfName());
-			htmlFileContent = htmlFileContent.replace("$lName",
-					student.getlName());
-			htmlFileContent = htmlFileContent.replace("$address",
-					student.getAddress());
-			String resumeFileName = student.getfName() + ".html";
-			FileWriter fileWriter = new FileWriter(defaultPath + resumeFileName);
-			fileWriter.write(htmlFileContent);
-			fileWriter.close();
-			bufferReader.close();
-			File file = new File(defaultPath + resumeFileName);
-			Desktop.getDesktop().browse(file.toURI());
 		}
+
 	}
 }

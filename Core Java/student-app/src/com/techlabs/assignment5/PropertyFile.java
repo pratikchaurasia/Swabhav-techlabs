@@ -24,9 +24,9 @@ public class PropertyFile {
 		Properties property = new Properties();
 		property.load(reader);
 
-		System.out.println("Database : "+property.getProperty("database"));
-		System.out.println("Password : "+property.getProperty("password"));
-		System.out.println("User : "+property.getProperty("user"));
+		System.out.println("Database : " + property.getProperty("database"));
+		System.out.println("Password : " + property.getProperty("password"));
+		System.out.println("User : " + property.getProperty("user"));
 
 	}
 }

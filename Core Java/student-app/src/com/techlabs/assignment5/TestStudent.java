@@ -6,7 +6,7 @@ import java.util.Set;
 public class TestStudent {
 	public static void main(String args[]) {
 		Student student1=new Student("pratik", "vasai", "7507587701");
-		Student student2=student1;
+		Student student2=new Student("pratik", "vasai", "7507587701");
 		
 		Set<Student> set=new HashSet<Student>();
 		set.add(student1);

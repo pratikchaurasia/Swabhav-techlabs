@@ -1,6 +1,7 @@
 package com.techlabs.account.test;
 
 import com.techlabs.account.Account;
+import com.techlabs.account.InsufficientFundException;
 
 public class TestAccount {
 	public static void main(String args[]) {
@@ -11,9 +12,12 @@ public class TestAccount {
 		printDetails(acc1);
 		
 		try {
-			acc2.withdraw(100);
-		} catch (Exception ex) {
+			acc2.withdraw(1000);
+		}catch(InsufficientFundException ex){
 			System.out.println(ex.getMessage());
+		}catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		
 		}
 		
 		printDetails(acc2);

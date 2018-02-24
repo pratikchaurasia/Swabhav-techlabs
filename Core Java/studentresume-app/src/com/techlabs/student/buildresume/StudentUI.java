@@ -1,4 +1,4 @@
-package com.techlabs.student;
+package com.techlabs.student.buildresume;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
@@ -8,11 +8,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.techlabs.student.Student;
+import com.techlabs.student.StudentDataStore;
+
 public class StudentUI {
 	private final String defaultPath = "src//com//techlabs//student//buildresume//";
+	StudentDataStore dataStore=new StudentDataStore();
 
-	public void buildResume(ArrayList<StudentStore> studentRecord) throws IOException {
-		for (StudentStore student : studentRecord) {
+	public void buildResume(ArrayList<Student> studentRecord) throws IOException {
+		for (Student student : studentRecord) {
 			BufferedReader bufferReader = new BufferedReader(new FileReader(
 					defaultPath + "resume.html"));
 			String currentLine = "", htmlFileContent = "";

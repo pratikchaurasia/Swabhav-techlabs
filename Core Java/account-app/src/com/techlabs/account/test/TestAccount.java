@@ -10,7 +10,7 @@ public class TestAccount {
 		acc1.withdraw(100);
 		printDetails(acc1);
 		
-		acc2.withdraw(100);
+		//acc2.withdraw(100);
 		printDetails(acc2);
 	}
 

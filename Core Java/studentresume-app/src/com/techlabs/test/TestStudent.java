@@ -1,13 +1,13 @@
-package com.techlabs.student.test;
+package com.techlabs.test;
 
 import java.io.IOException;
 
-import com.techlabs.student.Student;
+import com.techlabs.student.console.StudentConsole;
 
 public class TestStudent {
 
 	public static void main(String args[]) throws ClassNotFoundException, IOException {
-		Student student=new Student();
-		student.menu();
+		StudentConsole console=new StudentConsole();
+		console.menu();
 	}
 }

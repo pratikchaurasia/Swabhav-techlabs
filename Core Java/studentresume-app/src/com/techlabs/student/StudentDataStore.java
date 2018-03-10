@@ -33,20 +33,21 @@ public class StudentDataStore {
 		return studentRecord;
 	}
 
-	public Iterable<Student> search(String key) {
+	public ArrayList<Student> search(String key) {
 		ArrayList<Student> searchResult = new ArrayList<Student>();
 		for (Student student : studentRecord) {
 			if (student.getfName().contains(key)) {
 				searchResult.add(student);
+				return searchResult;
 			}
 		}
-		return searchResult;
+		throw new StudentNotFoundException();
 	}
 
-	public void removeStudent(String id) {
-		for (Student stud : studentRecord) {
-			if (search(id)!=null) {
-				studentRecord.remove(stud);
+	public void removeStudent(String name) {
+		for (Student student : studentRecord) {
+			if (student.getfName().contains(name)) {
+				studentRecord.remove(student);
 				return;
 			}
 		}

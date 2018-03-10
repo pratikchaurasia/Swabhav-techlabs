@@ -22,16 +22,22 @@ public class StudentDataStoreTest {
 		store.add(student);
 		countAfterAdding=store.getList().size();
 		
-		System.out.println(countBeforeAdding);
-		System.out.println(countAfterAdding);
+		//System.out.println(countBeforeAdding);
+		//System.out.println(countAfterAdding);
 		assertTrue(countBeforeAdding<countAfterAdding);	
 	}
-	@Test
-	public void testSave(){
-		int countBeforeSaving;
+	public void testRemove() {	
+		Student student1=new Student();
+		student1.setFName("krishna");
+		store.add(student1);
 		
-		Student student=new Student();
-		countBeforeSaving=store.getList().size();
+		Student student2=new Student();
+		student2.setFName("ankit");
+		store.add(student2);
+		
+		store.removeStudent("ankit");
+		assertTrue(store.getList().contains(student2));
+	
 	}
-
+	
 }

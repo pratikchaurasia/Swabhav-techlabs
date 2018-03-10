@@ -1,4 +1,4 @@
-package com.techlabs.addition;
+package com.techlabs.dogdoor;
 
 public class Remote {
 

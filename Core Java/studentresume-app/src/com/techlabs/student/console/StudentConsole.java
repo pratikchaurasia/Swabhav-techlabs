@@ -45,7 +45,7 @@ public class StudentConsole {
 				break;
 
 			case "remove":
-				System.out.println("Enter the Roll No to be removed");
+				System.out.println("Enter the student name");
 				String rollNo = input.nextLine();
 				dataStore.removeStudent(rollNo);
 				break;

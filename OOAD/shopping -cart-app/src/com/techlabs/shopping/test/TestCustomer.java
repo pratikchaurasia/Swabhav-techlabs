@@ -1,6 +1,6 @@
 package com.techlabs.shopping.test;
 
-import java.io.ObjectInputStream.GetField;
+
 import java.util.Date;
 
 import com.techlabs.shopping.Customer;

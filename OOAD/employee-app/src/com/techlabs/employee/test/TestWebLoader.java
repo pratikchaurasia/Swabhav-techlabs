@@ -2,7 +2,6 @@ package com.techlabs.employee.test;
 
 import java.io.IOException;
 
-import com.techlabs.loader.FileLoader;
 import com.techlabs.loader.WebLoader;
 
 public class TestWebLoader {

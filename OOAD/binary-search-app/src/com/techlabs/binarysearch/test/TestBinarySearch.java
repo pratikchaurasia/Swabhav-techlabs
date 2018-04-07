@@ -18,11 +18,10 @@ public class TestBinarySearch {
 		int key=inputOutput.inputKey();
 		
 		inputOutput.beforeSorting(list);
+		int index=search.binarySearch(key);
 		
-		inputOutput.afterSorting(list);
-		
-		
+		inputOutput.afterSorting(list);	
 		inputOutput.displayIndex(key, index);
-		search.binarySearch();
+		
 	}
 }

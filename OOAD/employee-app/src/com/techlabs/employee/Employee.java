@@ -1,5 +1,7 @@
 package com.techlabs.employee;
 
+import java.util.Objects;
+
 public class Employee {
 	private int employeeId;
 	private String name;
@@ -14,6 +16,7 @@ public class Employee {
 			int salary, int commission, int deptId) {
 		this.employeeId=employeeId;
 		this.name=name;
+		this.role=role;
 		this.managerId=managerId;
 		this.date=date;
 		this.salary=salary;
@@ -37,9 +40,27 @@ public class Employee {
 	public String getEmployeeName(){
 		return name;
 	}
+	public String getRole(){
+		return role;
+	}
+	public int getDeptId(){
+		return deptId;
+	}
+
 	
 	public int calculateSalary(Employee employee,int salary,int commission){
 		int annualSalary=(salary+commission)*12;
 		return annualSalary;
 	}
+	@Override
+	public boolean equals(Object obj){
+		Employee emp=(Employee)obj;
+		return this.getEmployeeId()==emp.employeeId;
+	}
+	
+	@Override 
+	public int hashCode(){
+		return this.getEmployeeId();
+	}
+	
 }

@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>
+        Ajax Example
+    </title>
+</head>
+    <body>
+        <button id="button" onclick="fetch()">Click here</button>
+        <p id="display"></p>
+        <script>
+            function fetch(){
+                var ajax=new XMLHttpRequest();
+                ajax.onreadystatechange=function(){
+                    if(this.readyState==4 && this.status==200){
+                        document.getElementById("display").innerHTML=this.responseText;
+                    }
+                };
+                ajax.open("GET","header.txt",true);
+                ajax.send();
+
+            }
+        </script>
+    </body>
+
+</html>

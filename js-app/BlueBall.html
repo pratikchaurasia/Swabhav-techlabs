@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blue Ball</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .button {
+        height: 25px;
+        width: 25px;
+        background-color: #bbb;
+        border-radius: 50%;
+        
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="start-game" onclick="">Start Game</button>
+    </div>
+    <br>
+    <div id="container">
+        <button id="reset-game" onclick="">Reset game</button>
+    </div></br>
+    <div class="" id="buttonID"></div>
+    <div>
+        <label for="" id="attempts"></label>
+    </div>
+    <script>
+        (function(){ 
+        var attempt=3;
+        var randomCircle=0;    
+        document.getElementById("start-game").addEventListener("click",loadButtons);
+        document.getElementById("reset-game").addEventListener("click",resetEverything);
+        var displayAttempts=document.getElementById("attempts");
+        displayAttempts.innerHTML="Attempts remaining "+ attempt;
+
+        function loadButtons(){
+            var buttonsbox=document.getElementById('buttonID');
+
+            displayAttempts.innerHTML="Attempts remaining "+ attempt--;
+            attempt=3
+            buttonsbox.innerHTML="";
+            for(i=0;i<50;i++){
+                
+                var button=document.createElement("BUTTON");
+                button.setAttribute('class','button');
+                document.getElementById('buttonID').appendChild(button);
+                button.value=i+1;
+                
+                
+                button.addEventListener("click",checkColor)
+                }  
+            }
+            
+            console.log(randomCircle=Math.floor(Math.random() * (50 - 0 + 1)) + 0); 
+            
+            function checkColor(){
+                
+                if(attempt>0){
+                    displayAttempts.innerHTML="Attempts remaining "+ --attempt;
+                    //console.log(this.value);
+                    if(randomCircle==this.value){
+                        this.setAttribute('style',"background-color:blue");
+                        displayAttempts.innerHTML="You won";
+                        resetEverything();
+                    }
+                    if(randomCircle<this.value){
+                        this.setAttribute('style',"background-color:green");
+                    }
+                    if(randomCircle>this.value){
+                        this.setAttribute('style',"background-color:red");
+                    }
+            
+                }
+                
+            }
+            function resetEverything(){
+                    document.getElementById("buttonID").innerHTML="";
+                    attempt=3;
+                    //displayAttempts.innerHTML=attempt;
+            }
+        
+        })();
+    </script>
+</body>
+</html>

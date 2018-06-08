@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Functions can be invoked automatically without being called:</p>
+
+
+<p id="demo"></p>
+<p id="num"></p>
+<p id="num2"></p>
+
+<script>
+var pratik="pc";
+var pratik=(function (name) {
+    document.getElementById("demo").innerHTML = "Hello! I call myself "+name;
+    var num=7507587701;
+    document.getElementById("num").innerHTML=num;
+    num=56;
+    document.getElementById("num2").innerHTML=num;
+}(pratik));
+</script>
+
+</body>
+</html>
+
+

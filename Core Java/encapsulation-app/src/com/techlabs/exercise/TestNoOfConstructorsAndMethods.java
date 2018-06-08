@@ -12,7 +12,7 @@ public class TestNoOfConstructorsAndMethods {
 			Class className = Class.forName("com.techlabs.rectangle.Rectangle");
 			Method methods[] = className.getDeclaredMethods();
 			Constructor constructors[] = className.getDeclaredConstructors();
-			Annotation[] annotations = className.isAnnotationPresent(NeedRefactory.Class);
+			//Annotation[] annotations = className.isAnnotationPresent(NeedRefactory.);
 
 			System.out.println("Total number of methods in a class : "
 					+ methods.length);
@@ -23,8 +23,8 @@ public class TestNoOfConstructorsAndMethods {
 					+ noOfGettersAndSetters(className, methods, "get"));
 			System.out.println("Total Number of Setters : "
 					+ noOfGettersAndSetters(className, methods, "set"));
-			System.out.println("Total Number of Annotations : "
-					+ annotations.length);
+			//System.out.println("Total Number of Annotations : "
+					//+ annotations.length);
 
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);

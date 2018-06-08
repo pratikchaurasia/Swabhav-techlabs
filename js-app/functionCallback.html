@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>
+        function callback
+    </title>
+    <body>
+        <script>
+            var balance=500;
+            function deposit(amt,emailNotification){
+                balance+=amt;
+                console.log("Current balance :" +balance);
+                emailNotification(balance);
+            }
+            deposit(200,function (currentBalance){
+                console.log("Amount is"+ currentBalance);
+            })
+            deposit(100,emailNotification);
+            function emailNotification(currentBalance){
+                console.log("Amount is"+ currentBalance);
+            }
+        </script>
+        <script>
+            setTimeout(function(){
+                console.log("call executed after 3 seconds")
+            },3000)
+            console.log("End of script");
+        </script>
+    </body>
+</head>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>color picker</title>
+    <script>
+        function changeBackground() {
+            var colorPicker=document.getElementById('1').value;
+            document.body.style.backgroundColor=colorPicker;
+}
+    </script>
+
+</head>
+<body>
+    <form align="center">
+    <select name="color" id="1" onchange='changeBackground()'>
+        <option >select a value</option>
+        <option value="#ffb3b3" >RED</option>
+        <option value="#b3ffb3">GREEN</option>
+        <option value="#b3c6ff">BLUE</option>
+    </select>
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCType html>
+<head>
+    <title>Addition</title>
+</head>
+    <body>
+        <div>
+            <div style="float:left;">
+                <label>Enter the First Number : </label>
+            </div>
+
+            <div style="float: left; height:20px; width:50px;"></div>
+            <input type="text" id="number1">
+            <div style="height:20px; width:50px;"></div>
+
+            <div style="float:left">
+                <label>Enter the Second Number :</label>
+            </div>
+
+            <div style="float:left; height:20px; width:35px;"></div>
+            <input type="text" id="number2"><br>
+            <div style="height:20px; width:10px;"></div>
+            <div style="float:left; height:20px; width:250px;"></div>
+            <button id="button" onclick="addition()">Addition</button>
+            
+        </div>
+        <div style="height:20px; width: 100px;"></div>
+        
+        <div style="float: left;">
+            <h2>Output is : </h2> 
+        </div>
+        <div style="float: left;height:20px; width:10px;"></div>
+        <div style="float: left;">
+            <h2><label id="output"></label></h2>
+        </div>
+        
+        <script>
+        //addition();
+        var add=function addition(){
+        var num1=parseInt(document.getElementById("number1").value);
+        var num2=parseInt(document.getElementById("number2").value);
+        document.getElementById("output").innerHTML=num1+num2;
+        }
+        </script>
+    </body>
+</html>

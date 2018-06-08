@@ -1,0 +1,36 @@
+<html>
+<head>
+    <body>
+        <script>
+            "use strict"
+            function f1() {
+                console.log("Inside foo");
+                for(var count =1;count<=10;count++){
+                    console.log(count);
+                }
+                console.log("counter outside loop"+count);
+                
+            }
+            f1();
+            //console.log("counter outside loop"+count);
+            console.log("End Of Scope");
+
+        </script>
+        <script>
+            f2();
+            var f2=function(){
+                console.log("inside f2");
+            }
+            f3();
+            function f3(){
+                console.log("inside f3");
+            }
+        </script>
+        <script>
+            var f4=function(){
+                console.log("inside f4");
+            }();
+        </script>
+    </body>
+</head>
+</html>

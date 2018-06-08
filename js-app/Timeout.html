@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>
+        Timeout Loader
+    </title>
+</head>
+<body>
+    <button id="button" >Click here</button>
+    <img id = "image"></div>
+    <label id="content"></label>
+    <script>
+        
+        (function(){ 
+            document.getElementById("button").addEventListener("click",loadImage);
+            function loadImage()
+            {
+                var content=document.getElementById("content");
+                content.innerHTML="";
+                var image=document.getElementById("image");
+                image.src="loader.gif"
+                setTimeout(function(){
+                    image.src = "";
+                    content.innerHTML="Loading Done";
+                },2000)
+            }
+
+        })();
+    </script>
+</body>
+</html>

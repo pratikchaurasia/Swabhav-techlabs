@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <script>
+    var meakeCalculator=function(){
+    var obj={};
+    var company="swabhav techlabs";
+    var developer="pratik";
+    obj.cubeEvenNo=function(no){
+        if(no%2==0){
+            return no*no*no;
+        }
+        throw "Not an Even No";
+        }
+        obj.getCompany=function(){
+            return company;
+        }
+        return obj;
+    }
+    var c=meakeCalculator();
+    console.log(c);
+    console.log(c.cubeEvenNo(2));
+    console.log(c.getCompany());
+    
+    
+</script>
+<script>
+    var studentDetails=function(){
+    var student={};
+    var name,roll;
+    student.setName=function(StudentName){
+        student.name=StudentName;
+    }
+    student.setRollNo=function(RollNo){
+        student.roll=RollNo;
+    }
+    student.getName=function(){
+            return student.name;
+    }
+    student.getRollNo=function(){
+            return student.roll
+        }
+        return student
+    }
+    var s=studentDetails();
+    console.log(s);
+    s.setName("pratik");
+    s.setRollNo("101");
+    console.log(s);
+    console.log("Student Name :"+s.getName()+" Roll No :"+s.getRollNo());
+
+
+</script>
+<script>
+    function employee(rollNo,name){
+        var _name;
+        var _roll;
+        if(rollNo>0 && name!=""){
+            _roll=rollNo;
+            _name=name;
+        }
+        else{
+            throw "Incomplete information";
+        }
+        this.getName=function getName(){
+            return _name;
+        }
+        this.getRollno=function getRollno(){
+            return _roll;
+        }
+    }
+        var s1=new employee(101,"pratik");
+        console.log(s1.getName());
+        console.log(s1.getRollno());
+        var s2=new employee(100,"himanshu");
+        console.log(s2);
+</script>
+</body>
+</html>

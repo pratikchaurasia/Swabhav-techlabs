@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<head> 
+    <title> JavaScript Stop Watch </title>
+</head> 
+<body> 
+    <div>
+        <p>
+            <span  id="hours">00 </span>:
+            <span  id="minutes">00 </span>:
+            <span  id="seconds">00 </span>:
+            <span  id="milliseconds">00 </span>
+        </p>
+    </div>
+    <div>
+        <button id="start">Start</button>
+        <div style="float: left; height: 20px; widows: 50px;"></div>
+        <button id="stop">Stop</button>
+        <div style="float: left; height: 20px; widows: 50px;"></div>
+        <button id="reset">Reset</button>
+    </div>
+
+    <script>
+        (function (){
+            var displayHours=document.getElementById("hours");
+            var displayMinutes=document.getElementById("minutes");
+            var displaySeconds=document.getElementById("seconds");
+            var displayMilliseconds=document.getElementById("milliseconds");
+
+            var hours=00;
+            var minute=00;
+            var second=00;
+            var millisecond=00;
+            var interval;
+
+            document.getElementById("start").addEventListener("click",start);
+            document.getElementById("stop").addEventListener("click",stop);
+            document.getElementById("reset").addEventListener("click",reset);
+            
+            function start(){
+                clearInterval(interval);
+                interval=setInterval(calculateTime,10);
+            }
+            function stop(){
+                clearInterval(interval);
+            }
+            function reset(){
+                clearInterval(interval);
+                hours="00";
+                millisecond="00";
+                second="00";
+                minute="00";
+                displayMilliseconds.innerHTML=millisecond;
+                displaySeconds.innerHTML=second;
+                displayMinutes.innerHTML=minute;
+                displayHours.innerHTML=hours;
+
+            }
+            function calculateTime(){
+                millisecond++;
+
+                if(millisecond<9){
+                    displayMilliseconds.innerHTML="0"+millisecond;
+                }
+                if(millisecond>9){
+                    displayMilliseconds.innerHTML=millisecond;
+                }
+            
+                if(millisecond>99){
+                    second++;
+                    displaySeconds.innerHTML="0"+second;
+                    millisecond=0;
+                    displayMilliseconds.innerHTML="0"+0;
+                }
+                
+                if (millisecond > 99) {
+                    second++;
+                    displaySeconds.innerHTML = "0" + second;
+                    millisecond = 0;
+                    displayMilliseconds.innerHTML = "0" + 0;
+                }
+
+                if (second > 9){
+                    displaySeconds.innerHTML = second;
+                }
+
+                if (second > 60) {
+                    minute++;
+                    displayMinutes.innerHTML = "0" + minute;
+                    second = 0;
+                    displaySeconds.innerHTML = "0" + 0;
+                }
+                if (minute > 9){
+                    displayMinutes.innerHTML = minute;
+                }
+
+                if (minute > 60) {
+                    hours++;
+                    displayHours.innerHTML = "0" + hours;
+                    minute = 0;
+                    displayMinutes.innerHTML = "0" + 0;
+                }
+                    
+                
+  
+            
+            }
+        })();
+    </script>
+</body> 
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <script>
+        var dataService=function(){
+            var obj={};
+            obj.getData=function (){
+                return Math.random()*10;
+            }
+            obj.getDataAsync=function(callback){
+                setTimeout(function(){
+                var r=Math.random()*100;
+                if(r>50){
+                    callback("Success"+r);
+                }
+                else{
+                    callback("Error not allowed");
+                }
+                },0);
+            }
+            return obj;
+        } ();
+        var d=dataService.getData();
+        console.log(d);
+        dataService.getDataAsync(function(r) {
+            console.log(r);
+        });
+        console.log("End of Script");
+    </script>
+</body>
+</html>

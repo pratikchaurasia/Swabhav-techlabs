@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({url: "http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/", success: function(result){
+            $("#div1").html(result);
+            var len =result.length;
+            var txt=$("#table1").val();
+            txt.innerHTML="";
+           
+            console.log(len);
+                    for(var i=0;i<len;i++){
+                        txt += "<tr><td>"+result[i].rollNo+"</td><td>"+result[i].name+"</td><td>"+result[i].age+"</td><td>"+result[i].email+"</td><td>"+result[i].date+"</td><td>"+result[i].isMale+"</td></tr>";
+                    }
+                    }
+                }
+        );
+    });
+    $("#submit").click(function(){
+        var rollNo1=$("#rollNo").val();
+        var name1=$("#name").val();
+        var age1=$("#age").val();
+        var email1=$("#email").val();
+        var date1=$("#date").val();
+        var isMale1=$('input[name=gender]:checked').val();
+
+        console.log(rollNo1+" "+name1+" "+age1+" "+email1+" "+date1+" "+isMale1+" ");
+        $.post("http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/",
+        
+        
+        
+        {
+          rollNo:rollNo1,
+          name:name1,
+          age: age1,
+          email: email1,
+          date: date1,
+          isMale: isMale1
+
+        },
+        function(status){
+            alert("\nStatus: " + status);
+        });
+    });
+});
+
+</script>
+
+</head>
+<body>
+
+    <div id="div1"><h2>Studdent Details</h2></div>
+    <div>
+    Roll no : <input type="number" id="rollNo" required><br><br>
+    Name : <input type="text" id="name" required><br><br>
+    Age : <input type="number" id="age" required><br><br>
+    Email : <input type="email" id="email" required><br><br>
+    date : <input type="date" id="date" required/><br><br>
+    IsMake ? : Male<input  type="radio" id="male" value="true"  name="gender" required/>Female
+                <input  type="radio" id="female" value="false" name="gender" required/><br><br>
+    <button type="submit" id="submit">Submit</button><br><br><br><br>
+</div>
+
+
+
+<button>Get Details</button><br><br>
+<table id="table1" >
+    <th>Roll NO </th>
+    <th>Name </th>
+    <th>Age </th>
+    <th>Email </th>
+    <th>Date </th>
+    <th>IsMale? </th>
+</table>
+</body>
+</html>

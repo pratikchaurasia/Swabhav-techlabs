@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>
+        Append page
+    </title>
+</head>
+<body>
+    <div>
+        <div style="float:left" height=10px width=50px>Enter your Name :</div>
+        <input type="text" id="name">
+        <div>
+            <label id="output"></label>
+        </div>
+    </div>
+    <script>
+        document.getElementById("name").addEventListener("keyup",appendText);
+        document.getElementById("name").addEventListener("keyup",addToLocalStorage);
+        function appendText(){
+            if (event.keyCode === 13) {
+                var input=document.getElementById("name").value;
+                var output=document.getElementById("output");
+                output.innerHTML=input+"<br><output>"+output.innerHTML+"<button onclick='divRemover(this)' name='"+name+"div'>X</button></output>";
+
+                /*var button=document.createElement("button");
+                var textNode=document.createTextNode("x")
+                button.setAttribute('class','button');
+                button.appendChild(textNode);
+                document.getElementById('output').appendChild(button);
+                button.value;*/
+            }
+        }
+        function addToLocalStorage(){
+            if (event.keyCode === 13) {
+            var i=0;
+            var input=document.getElementById("name").value;
+            localStorage.setItem("i",JSON.stringify(input));
+            i++;
+            }
+        }
+        function divRemover(arg){
+		document.getElementById(arg.name).remove();
+	    }
+    </script>
+</body>
+</html>

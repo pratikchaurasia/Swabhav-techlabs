@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div>
+        <p id="balance"></p>
+    </div>
+    <script>
+        function account(AccountNumber,name,balance){
+        var _accNo=AccountNumber;
+        var _name=name;
+        var _balance=balance;
+
+        this.getBalance=function (){
+            return _balance;
+        }
+
+        this.getAccountNumber=function (){
+            return _accNo;
+        }
+        this.getName=function (){
+            return _name;
+        }
+
+        this.deposit=function (depositAmt){
+            _balance+=depositAmt;
+        
+        }
+        this.withdraw= function (withdrawlAmt){
+            if(balance>500 &&_balance-withdrawlAmt>0){
+                _balance-=withdrawlAmt;
+            }
+            else{
+                alert("Transaction Failed")
+            }
+        
+        }
+        }
+        var s1=new account(101,"pratik",1000);
+        s1.deposit(100);
+        console.log("Account No:"+s1.getAccountNumber()+" Account holder name : "+s1.getName()+" Balance :"+s1.getBalance());
+        s1.withdraw(1500);
+        console.log("Account No:"+s1.getAccountNumber()+" Account holder name : "+s1.getName()+" Balance :"+s1.getBalance());
+
+    </script>
+</body>
+</html>

@@ -20,11 +20,11 @@ public class TestGame {
 	static private IResultAnalyzer ra = new Result3DAnalyzer(b);
 	static private int row, column;
 	static private int cellNo = 0;
-	static private Player p1 = new Player(playerName1, Mark.X);
-	static private Player p2 = new Player(playerName2, Mark.O);
+	//static private Player p1 = new Player(playerName1, Mark.X);
+	//static private Player p2 = new Player(playerName2, Mark.O);
 
-	static private Player p[] = { p1, p2 };
-	static private Game game = new Game(b, p, ra);
+	//static private Player p[] = { p1, p2 };
+	//static private
 
 	public static void main(String args[]) throws IOException {
 
@@ -36,7 +36,13 @@ public class TestGame {
 		System.out.println("Enter the name of the player ");
 		playerName2 = bufferReader.readLine();
 
+		Player p1 = new Player(playerName1, Mark.X);
+		Player p2 = new Player(playerName2, Mark.O);
+		Player p[] = { p1, p2 };
+		Game game = new Game(b, p, ra);
+		
 		System.out.println("Enter the cell number from 1 to 9");
+		
 		for (int k = 0; k < 9; k++) {
 			cellNo = Integer.parseInt(bufferReader.readLine());
 			Result r = game.play(getRow(cellNo), getColumn(cellNo));
@@ -71,4 +77,4 @@ public class TestGame {
 	public static int getColumn(int cellNo) {
 		return (cellNo - 1) % 3;
 	}
-}
+	}

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <style>
+        .button {
+            background-color: rgb(73, 88, 73);
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+
+    <button id="buttoninput">Start Game</button>
+    <div id="loadbutton"></div>
+    <div id="data"></div>
+    <script>
+        
+        $(document).ready(function () {
+            $(document).on("click", "#buttoninput", function () {
+                var randomball1 = 0;
+                displayButton();
+                changeRandomNumber();
+                var guess = 0
+                
+                function displayButton() {
+                    $("#loadbutton").html("");
+                    for (i = 0; i < 50; i++) {
+                        var button = $("<button></button>").text(i + 1);
+                        $(button).val(i + 1);
+                        button.prop("class","button");
+                        $(button).click(function () {
+                            //console.log(this.value);
+                            checkColour(this);
+                        });
+                        $("#loadbutton").append(button);
+                    }
+               }
+               function changeRandomNumber(){
+                console.log(randomball1=Math.floor(Math.random()*50));
+            }
+            function checkColour(btn){
+                $("#data").html("You will get 3 attempts");
+                guess+=1;
+                console.log(randomball1);
+                console.log(btn.value);
+                if(randomball1==btn.value){
+                    $(btn).css("background","#0000FF");
+                    alert("You won");
+                    clear();
+                }
+                if(randomball1<btn.value){
+                    $(btn).css("background","#00FF00");
+                }
+                if(randomball1>btn.value){
+                    $(btn).css("background","#FF0000");
+                }
+                if(guess==3){
+                    alert("Game Over");
+                    guess=0;
+                    clear();
+                }
+            }
+            function clear(){
+                $("#loadbutton").html("");                        
+            }
+            });
+        });
+    </script>
+</body>
+
+</html>

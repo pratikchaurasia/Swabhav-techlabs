@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Pages</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<h1 align="center" class="jumbotron">Home Page</h1>
+
+	<div class="form-basic container">
+		<form action="contactController" method="post">
+			<b>Name :</b><input type="text" name="name" id="text" class="form-group" required></input><br>
+			<b>Email :</b><input type="text" name="email" id="text" class="form-group" required></input><br>
+			<b>Number :</b><input type="text" name="number" id="text" class="form-group" required></input><br>
+			<input type="submit" value="Add" class="btn btn-success"><br>
+		</form>
+		<br><input type="button" onclick="location.href='contactController';"
+			value="Display contacts" class="btn btn-primary"/>
+	</div>
+
+</body>
+</html>

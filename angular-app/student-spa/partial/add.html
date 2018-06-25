@@ -1,0 +1,41 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<section>
+    <center>
+        <h1 class="jumbotron">Add Student</h1>
+    </center>
+    <div class="form-vertical col-md-4" ng-form="mainForm">
+        <div ng-form="mainRollNo" class="form-group ">Roll no :
+            <input type="number" ng-model="rollNo" id="rollNo" class="form-control" required>
+        </div>
+
+        <div ng-form="mainName" class="form-group ">Name :
+            <input type="text" name="name" ng-model="name" class="form-control" id="name" required>
+
+        </div>
+        <div ng-form="mainAge" class="form-group ">
+            Age :
+            <input type="number" ng-model="age" class="form-control" id="age" required>
+
+        </div>
+
+        <div ng-form="mainEmail" class="form-group ">
+            Email :
+            <input type="email" ng-model="email" class="form-control" id="email" required>
+
+        </div>
+        <div ng-form="mainDate" class="form-group">
+            date :
+            <input type="date" ng-model="date" class="form-control" id="date" required>
+
+        </div>
+        <div ng-form="mainGender" class="form-group ">
+            IsMale ? : Male
+            <input id="male" type="radio" ng-model="isMale" ng-value="true" name="gender" required />Female
+            <input id="female" type="radio" ng-model="isMale" ng-value="false" name="gender" />
+
+        </div>
+
+        <button type="submit" id="submit" class='btn btn-primary btn-lg' ng-click="studentAdd()" ng-disabled="mainForm.$invalid || mainForm.$pristine ||mainForm.$error.required">Submit</button>
+    </div>
+
+</section>

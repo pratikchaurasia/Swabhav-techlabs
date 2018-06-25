@@ -1,0 +1,2 @@
+ALTER TABLE Employee
+ALTER COLUMN names VARCHAR(19)

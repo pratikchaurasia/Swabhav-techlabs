@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Welcome</title>
+</head>
+<body>
+    <script src="jquery.js">
+    </script>
+    <script>
+        $(function () {
+            console.log("dom is ready ");
+            
+            $('#button').click(function (e) {
+                $('#displayhere').prepend($('#name').val() + "<br>");
+            });
+            $("#name").keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $('#displayhere').append($('#name').val() + "<br>");
+                }
+            });
+        });
+    </script>
+</body>
+<div id="header"></div>
+Name: <input type="text" id="name">&nbsp <input type="button" id="button" value="post">
+<div id="displayhere"></div>
+
+</html>

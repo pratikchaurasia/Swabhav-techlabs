@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="student-spa">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular-route.js"></script>
+    <script src="controllers.js"></script>
+    <script src="genderFilter.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css"></link>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#students">Student</a>
+        <a href="#add">Add</a>
+        <a href="#/" style=float:right ng-controller="logoutCtrl" ng-show="checkLogin()" ng-click="redirect()">Logout</a>
+        <a style=float:right><label ng-model="user" ng-controller="loginCtrl" ng-show=getName()>{{user}}</label></a>
+    </div>
+    <div ng-view>
+
+    </div>
+</body>
+
+</html>

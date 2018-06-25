@@ -1,103 +1,105 @@
 <html>
+
 <head>
     <title>
         Question Bank
     </title>
 </head>
+
 <body>
-        <div id="headingArea">
-            <center>
-                <h1>
-                    Question game
-                </h1>
-            </center>
-        </div>
-        <div id="questionsArea"></div>
-        <div id="resultArea"></div>
+    <div id="headingArea">
+        <center>
+            <h1>
+                Question game
+            </h1>
+        </center>
+    </div>
+    <div id="questionsArea"></div>
+    <div id="resultArea"></div>
 </body>
 <script>
-        var questions;
-        var totalQuestions = 5;
-        var correctAnswers = 0;
-        var questionNo = [Math.floor(Math.random() * 10)];
-        
-    
-        (function () {
-            defineQuestions();
-            initializeQuestions();
-            
+    var questions;
+    var totalQuestions = 5;
+    var correctAnswers = 0;
+    var questionNo = [Math.floor(Math.random() * 10)];
+
+
+    (function () {
+        defineQuestions();
+        initializeQuestions();
+
 
         function defineQuestions() {
-        questions = [
-            {
-                id: 1, title: "Capital of India?",
-                options: [{ id: 'a', title: 'Islamabad' }, { id: 'b', title: 'Sydeny' },
-                { id: 'c', title: 'New Delhi' }, { id: 'd', title: 'New York' }],
-                answer: 'c'
-            },
-            {
-                id: 2, title: "Who is the highest Run Scorer in Cricket?",
-                options: [{ id: 'a', title: 'Ricky Ponting' }, { id: 'b', title: 'Sachin Tendulkar' },
-                { id: 'c', title: 'Saurav Ganguly' }, { id: 'd', title: 'Brian Lara' }],
-                answer: 'b'
-            },
-            {
-                id: 3, title: "Which is the largest country in the World?",
-                options: [{ id: 'a', title: 'Russia' }, { id: 'b', title: 'Canada' },
-                { id: 'c', title: 'USA' }, { id: 'd', title: 'China' }],
-                answer: 'a'
-            },
-            {
-                id: 4, title: "Which is the satellite of the Planet  Earth?",
-                options: [{ id: 'a', title: 'Titan' }, { id: 'b', title: 'Moon' },
-                { id: 'c', title: 'Exodus' }, { id: 'd', title: 'Venus' }],
-                answer: 'b'
-            },
-            {
-                id: 5, title: "When is the Independence Day of India?",
-                options: [{ id: 'a', title: '4th,July' }, { id: 'b', title: '15th,August' },
-                { id: 'c', title: '1st,May' }, { id: 'd', title: '26th, January' }],
-                answer: 'b'
-            },
-            {
-                id: 6, title: "Water is ??",
-                options: [{ id: 'a', title: 'Sweet' }, { id: 'b', title: 'Tasteless' },
-                { id: 'c', title: 'Bitter' }, { id: 'd', title: 'Sour' }],
-                answer: 'b'
-            },
-            {
-                id: 7, title: "Which is the highest mountain?",
-                options: [{ id: 'a', title: 'Mt. Everest' }, { id: 'b', title: 'Kanchenjunga' },
-                { id: 'c', title: 'Nanda Devi' }, { id: 'd', title: 'Mt. Kalsu Bai' }],
-                answer: 'a'
-            },
-            {
-                id: 8, title: "What is the value of PI?",
-                options: [{ id: 'a', title: '22/9' }, { id: 'b', title: '3.14' },
-                { id: 'c', title: '11.22' }, { id: 'd', title: '4.98' }],
-                answer: 'b'
-            },
-            {
-                id: 9, title: "Nearest star to Planet Earth?",
-                options: [{ id: 'a', title: 'Moon' }, { id: 'b', title: 'Jupiter' },
-                { id: 'c', title: 'Venus' }, { id: 'd', title: 'Sun' }],
-                answer: 'd'
-            },
-            {
-                id: 10, title: "Nationl Animal of India?",
-                options: [{ id: 'a', title: 'Dog' }, { id: 'b', title: 'Cat' },
-                { id: 'c', title: 'Tiger' }, { id: 'd', title: 'Elephant' }],
-                answer: 'c'
-            }
-        ];
-        
-    }
-    function initializeQuestions() {
-        var randomNumber=Math.floor(Math.random() *10);
-        var startIndex;
-        var endIndex;
-        var j=1;
-        var k=1;
+            questions = [
+                {
+                    id: 1, title: "Capital of India?",
+                    options: [{ id: 'a', title: 'Islamabad' }, { id: 'b', title: 'Sydeny' },
+                    { id: 'c', title: 'New Delhi' }, { id: 'd', title: 'New York' }],
+                    answer: 'c'
+                },
+                {
+                    id: 2, title: "Who is the highest Run Scorer in Cricket?",
+                    options: [{ id: 'a', title: 'Ricky Ponting' }, { id: 'b', title: 'Sachin Tendulkar' },
+                    { id: 'c', title: 'Saurav Ganguly' }, { id: 'd', title: 'Brian Lara' }],
+                    answer: 'b'
+                },
+                {
+                    id: 3, title: "Which is the largest country in the World?",
+                    options: [{ id: 'a', title: 'Russia' }, { id: 'b', title: 'Canada' },
+                    { id: 'c', title: 'USA' }, { id: 'd', title: 'China' }],
+                    answer: 'a'
+                },
+                {
+                    id: 4, title: "Which is the satellite of the Planet  Earth?",
+                    options: [{ id: 'a', title: 'Titan' }, { id: 'b', title: 'Moon' },
+                    { id: 'c', title: 'Exodus' }, { id: 'd', title: 'Venus' }],
+                    answer: 'b'
+                },
+                {
+                    id: 5, title: "When is the Independence Day of India?",
+                    options: [{ id: 'a', title: '4th,July' }, { id: 'b', title: '15th,August' },
+                    { id: 'c', title: '1st,May' }, { id: 'd', title: '26th, January' }],
+                    answer: 'b'
+                },
+                {
+                    id: 6, title: "Water is ??",
+                    options: [{ id: 'a', title: 'Sweet' }, { id: 'b', title: 'Tasteless' },
+                    { id: 'c', title: 'Bitter' }, { id: 'd', title: 'Sour' }],
+                    answer: 'b'
+                },
+                {
+                    id: 7, title: "Which is the highest mountain?",
+                    options: [{ id: 'a', title: 'Mt. Everest' }, { id: 'b', title: 'Kanchenjunga' },
+                    { id: 'c', title: 'Nanda Devi' }, { id: 'd', title: 'Mt. Kalsu Bai' }],
+                    answer: 'a'
+                },
+                {
+                    id: 8, title: "What is the value of PI?",
+                    options: [{ id: 'a', title: '22/9' }, { id: 'b', title: '3.14' },
+                    { id: 'c', title: '11.22' }, { id: 'd', title: '4.98' }],
+                    answer: 'b'
+                },
+                {
+                    id: 9, title: "Nearest star to Planet Earth?",
+                    options: [{ id: 'a', title: 'Moon' }, { id: 'b', title: 'Jupiter' },
+                    { id: 'c', title: 'Venus' }, { id: 'd', title: 'Sun' }],
+                    answer: 'd'
+                },
+                {
+                    id: 10, title: "Nationl Animal of India?",
+                    options: [{ id: 'a', title: 'Dog' }, { id: 'b', title: 'Cat' },
+                    { id: 'c', title: 'Tiger' }, { id: 'd', title: 'Elephant' }],
+                    answer: 'c'
+                }
+            ];
+
+        }
+        function initializeQuestions() {
+            var randomNumber = Math.floor(Math.random() * 10);
+            var startIndex;
+            var endIndex;
+            var j = 1;
+            var k = 1;
 
             if (randomNumber + totalQuestions > 9) {
                 startIndex = randomNumber - totalQuestions;
@@ -108,43 +110,48 @@
                 endIndex = randomNumber + totalQuestions;
             }
 
-        var qArea = document.getElementById("questionsArea");
-        for (i = startIndex; i < endIndex; i++) {
-            qArea.innerHTML += "<div class='questions' id='question" + k + "'><h3 data-question=" + k + "> " + k + "." + questions[i].title + "</h3>";
-        
-        var optionsi = document.createElement('div');
-            for (var option of questions[i].options) {
-                optionsi.innerHTML += '<input type="radio" class="input" name="option' + j + '" id="option' + j + '" data-question="' + i + '" value="' + option.id + '" ><label for="OptionI" class="input">' + option.title + '</label>';
-            }
-            j++;
-            document.getElementById("question" + k).appendChild(optionsi);
-            k++;
-        }
-        qArea.innerHTML += '<br><input type="button" name="submit" id="submitQuestion" value="Submit Answers"><br>';
-        
-        
-    }
-    document.getElementById("submitQuestion").addEventListener("click",checkAnswerss);
-    
-    function checkAnswerss(){
-        
-        for(i=1;i<=totalQuestions;i++){
-            var selectedOption=document.querySelector('input[id="option' + i + '"]:checked').value;
+            var qArea = document.getElementById("questionsArea");
+            for (i = startIndex; i < endIndex; i++) {
+                qArea.innerHTML += "<div class='questions' id='question" + k + "'><h3 data-question=" + k + "> " + k + "." + questions[i].title + "</h3>";
 
-            var questionNum=document.getElementById("option"+i).getAttribute("data-question");
-            var correctOption=questions[questionNum].answer;
-            if(selectedOption==correctOption){
-                correctAnswers++;
-            }  
+                var optionsi = document.createElement('div');
+                for (var option of questions[i].options) {
+                    optionsi.innerHTML += '<input type="radio" class="input" name="option' + j + '" id="option' + j + '" data-question="' + i + '" value="' + option.id + '" ><label for="OptionI" class="input">' + option.title + '</label>';
+                }
+                j++;
+                document.getElementById("question" + k).appendChild(optionsi);
+                k++;
+            }
+            qArea.innerHTML += '<br><input type="button" name="submit" id="submitQuestion" value="Submit Answers"><br>';
+
+
         }
-        console.log(correctAnswers);
-        printDetails();
-    }
-    function printDetails() {
-        var resultArea = document.getElementById("resultArea");
-        resultArea.innerHTML +="<h1> Score :"+correctAnswers+"/"+totalQuestions+"</h1><h2> Score :"+(correctAnswers/totalQuestions)*100+"%</h2>";
-        resultArea.scrollIntoView();
-    }
+        document.getElementById("submitQuestion").addEventListener("click", checkAnswerss);
+
+        function checkAnswerss() {
+
+            for (i = 1; i <= totalQuestions; i++) {
+                var selectedOption = document.querySelector('input[id="option' + i + '"]:checked').value;
+
+                var questionNum = document.getElementById("option" + i).getAttribute("data-question");
+                var correctOption = questions[questionNum].answer;
+                if (selectedOption == correctOption) {
+                    correctAnswers++;
+                }
+            }
+
+            console.log(correctAnswers);
+            printDetails();
+            correctAnswers=0;
+        }
+        function printDetails() {
+            var resultArea = document.getElementById("resultArea");
+            console.log("print")
+            resultArea.innerHTML="";
+            resultArea.innerHTML = "<h1> Score :" + correctAnswers + "/" + totalQuestions + "</h1><h2> Score :" + (correctAnswers / totalQuestions) * 100 + "%</h2>";
+            console.log("end")
+        }
     })();
 </script>
+
 </html>

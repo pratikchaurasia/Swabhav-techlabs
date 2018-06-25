@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="studentSPA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Student SPA</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap.min.css">
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="studentSVC.js"></script>
+    <script src="partialTemplates/homeCtrl.js"></script>
+    <script src="partialTemplates/addStudentCtrl.js"></script>
+    <script src="partialTemplates/editStudentCtrl.js"></script>
+    <script src="partialTemplates/deleteStudentCtrl.js"></script>
+</head>
+<style>
+    nav {
+        background-color: black;
+        font-size: 1.4em;
+    }
+
+    nav a {
+        color: silver;
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+        <ul class="container">
+            <a href="#/">Home</a>
+            <a href="#/add">Add Student</a>
+        </ul>
+    </nav>
+
+    <div ng-view>
+    </div>
+
+</body>
+
+</html>

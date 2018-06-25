@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        //arrow functions
+        const greetings = name => `pratik ${name}`;
+        console.log(greetings);
+
+        //merging objects
+        const object = { id: 1, name: "pratik" }
+        const object1 = { company: "aurionpro", place:"rabale" }
+        console.log({ ...object, ...object1 });
+
+        //accessing variables without dot operator
+        const obj1 = { id: 1, name: "pratik", company: "aurionpro", place:"rabale" }
+        const info={
+            id,
+            name,
+            company,
+            place
+        }=obj1
+        console.log(place);
+
+        //new way of object creation
+        var name="pratik";
+        var id=101;
+        var company="Aurionpro";
+        const information={name,id,company}
+        console.log(information);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

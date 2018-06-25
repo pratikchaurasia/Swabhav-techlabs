@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        var promise=new Promise(function (resolve, reject) {
+
+            resolve(1);
+
+        }).then(function (result) {
+
+            console.log(result);
+            return result * 2;
+
+        }).then(function (result) { 
+
+            console.log(result);
+            if(result==2){
+                reject();
+            }
+            return result;
+        }).catch(
+            function(){
+            console.log("End");
+        }
+        );
+            
+        
+    </script>
+</body>
+
+</html>

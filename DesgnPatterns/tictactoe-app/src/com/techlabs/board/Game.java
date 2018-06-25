@@ -28,7 +28,7 @@ public class Game {
 		
 	}
 	private void changePlayer() {
-		if (currentPlayer.toString().equals(player[0].toString())) {
+		if ((currentPlayer).equals(player[0])) {
 			currentPlayer = player[1];
 		} else {
 			currentPlayer = player[0];

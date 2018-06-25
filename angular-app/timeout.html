@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.js"></script>
+    <script>
+        angular.module("modA", [])
+            .controller("Timeout", function ( $scope,$timeout) {
+
+                console.log("inside Invoice controller");
+                $scope.company = {
+                    name:'Swabhav Techlabs',
+                    city:'Andheri'};
+                $timeout(function(){
+                    $scope.company.name= 'Aurion Pro';
+                    $scope.company.city= 'Rable';
+                },2000);
+            });
+    </script>
+</head>
+
+<body>
+    <body ng-app="modA">
+        <section ng-controller="Timeout">
+            <h2>{{company.name}}</h2>
+            <h2>{{company.city}}</h2>
+        </section>
+    </body>
+</body>
+
+</html>

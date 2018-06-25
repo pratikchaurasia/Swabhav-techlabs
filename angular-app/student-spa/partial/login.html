@@ -1,0 +1,29 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<section>
+    <div class="container">
+        <br>
+        <br>
+        <div class="jumbotron">
+            <center>
+                <h1>Login Details</h1>
+            </center>
+        </div>
+        <label for="uname">
+            <b>Username</b>
+        </label>
+        <input type="text" placeholder="Enter Username" ng-model="student.user" class="form-control" name="uname" required>
+        <br>
+        <br>
+        <label for="psw">
+            <b>Password</b>
+        </label>
+        <input type="password" placeholder="Enter Password" ng-model="student.pass" class="form-control" name="psw" required>
+        <br>
+        <br>
+
+        <input type="checkbox" ng-controller="loginCtrl" ng-click="isChecked()" ng-model="student.remember"> Remember me
+
+        <button type="submit" ng-click="checkCredentials(student)" class="btn-primary btn-lg">Login</button>
+
+    </div>
+</section>

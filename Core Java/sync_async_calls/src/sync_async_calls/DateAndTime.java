@@ -5,13 +5,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class DateAndTime {
+public class DateAndTime implements Runnable{
 	
-	public Date getDateAndTime(){
+	public void getDateAndTime(){
 		Calendar calender=new GregorianCalendar();
 		Date date=calender.getTime();
 		
-		return date;
+		System.out.println(date);
+	}
+	
+
+	@Override
+	public void run() {
+		while(true){
+			getDateAndTime();
+		}
 	}
 }
 

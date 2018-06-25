@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap-app/bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        angular.module("modA", [])
+            .controller("employeeController", function ($scope) {
+
+                $scope.emp=[]
+                $scope.employee = [
+                    {
+                        id: 101,
+                        "name": "pratik",
+                        "role": "developer"
+                    },
+                    {
+                        id: 102,
+                        "name": "himanshu",
+                        "role": "developer"
+                    }
+                ];
+                $scope.addEmployee = function (id,name,role) {
+                    $scope.employee.push({
+                        id:id,
+                        "name":name,
+                        "role":role
+                    });
+                    
+                }
+            })
+
+    </script>
+</head>
+
+<body ng-app="modA" ng-controller="employeeController" ng-submit="addEmployee(id,name,role)">
+    <div>
+        <form class="" >
+        Id :
+        <input type="number" ng-model="id" required/> Name :
+        <input type="text" ng-model="name" required/> Role :
+        <input type="text" ng-model="role" required/>
+        <input type="submit" class="btn btn-primary" >
+        </form>
+    </div>
+
+
+    <div id="display" class="col-lg-3">
+        <table class="table table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+            <tr ng-repeat="emp in employee">
+                <td>{{emp.id}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.role}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+
+</html>

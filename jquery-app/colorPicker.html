@@ -1,0 +1,30 @@
+<html>
+    <title>
+        Change Colour
+    </title>
+<head>
+
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(document).on("click","#color",function(){
+                var select= $("#color").val();
+                $("body").css("background",select);
+            });
+        });
+    </script>
+</head>
+
+<body>
+        <form align = 'center'>
+                <select name = 'color' id = 'color' onchange = 'changeBackground()' >
+                    <option  value = '#ffffff' selected>None</option>
+                    <option  value = '#ffb3b3'>Red</option>
+                    <option  value = '#b3c6ff'>Blue</option>
+                    <option  value = '#b3ffb3'>Green</option>
+                    <option  value = '#ffffb3'>Yellow</option>
+                </select>
+                </form>
+</body>
+
+</html>

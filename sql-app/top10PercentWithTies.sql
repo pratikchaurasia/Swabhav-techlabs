@@ -1,0 +1,3 @@
+SELECT TOP 10 PERCENT WITH TIES sname
+FROM   Student
+ORDER  BY sname DESC

@@ -12,10 +12,9 @@ public class Player {
 	public Mark getMark() {
 		return this.mark;
 	}
-	
 	@Override
-	public String toString() {
+	public String toString(){
 		return this.name;
-}
+	}
 
 }

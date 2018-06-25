@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.js"></script>
+    <script src="module.js"></script>
+</head>
+
+<body ng-app="modA">
+    <section ng-controller="InvoiceController">
+        <h2>{{developer}}</h2>
+        <h2>{{invoice.cost}}</h2>
+    </section>
+    <section ng-controller="AddressController">
+        <h2>{{address.city}}</h2>
+        <h2>{{address.state}}</h2>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.js"></script>
+    <script>
+        /*angular.module("modA", [])
+            .controller("event",['$rootScope','$scope', function ( $scope) {
+                $scope.display= function(){
+                console.log("inside Invoice controller");
+                $scope.fetch = {
+                    name:'Pratik Chaurasia',
+                    image:'carousel4.jpg'};
+                }
+            }]);*/
+            angular.module("modA",[]).controller("event",["$rootScope","$scope",function(o){o.display=function(){console.log("inside Invoice controller"),o.fetch={name:"Pratik Chaurasia",image:"carousel4.jpg"}}}]);
+    </script>
+</head>
+
+<body>
+    <body ng-app="modA">
+        <section ng-controller="event">
+            <h2>Name :{{fetch.name}}<br>
+            Profile :</h2><img width=100px margin=0 ng-src='{{fetch.image}}'></img><br>
+            <button ng-click="display()">Load</button>
+        </section>
+    </body>
+</body>
+
+</html>

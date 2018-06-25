@@ -40,5 +40,13 @@ public class FourDboard implements IBoard{
 		}
 		return true;
 	}
+	@Override
+	public int getRow(int cellNo) {
+		return (cellNo - 1) / 4;
+	}
+	@Override
+	public int getColumn(int cellNo) {
+		return (cellNo - 1) % 3;
+	}
 
 }

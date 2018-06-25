@@ -25,8 +25,9 @@ public class GUIframe extends JFrame {
 	private JPanel contentPane;
 	JLabel lblClock;
 	
-	DateAndTime dateTime=new DateAndTime();
-
+	SyncDateAndTime dateTime=new SyncDateAndTime();
+	DateAndTime asyncDateTime=new DateAndTime();
+	Thread t1=new Thread(asyncDateTime);
 	/**
 	 * Launch the application.
 	 */
@@ -73,25 +74,8 @@ public class GUIframe extends JFrame {
 		JButton btnNewButton_1 = new JButton("Async print");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread t1=new Thread(){
-					public void run(){
-						try {
-								while(true){
-								Date date=dateTime.getDateAndTime();
-								lblClock.setText("Date and Time : "+date);
-								sleep(1000);
-								
-								}
-							
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-					}
-				};
-				t1.start();
-			}
+						t1.start();
+		}
 		});
 		btnNewButton_1.setBounds(147, 49, 89, 23);
 		panel.add(btnNewButton_1);

@@ -1,0 +1,48 @@
+<h2 class="jumbotron">
+    <center>Student Details</center>
+</h2>
+
+
+<div id="dataDisplay" name="displayArea" class="row container">
+    <div class="col-md-1" id="RollNo">RollNo</div>
+    <div class="col-md-1" id="name">Name</div>
+    <div class="col-md-2" id="email">Email</div>
+    <div class="col-md-2" id="joining">Joining Date</div>
+    <div class="col-md-1" id="age">Age</div>
+    <div class="col-md-1" id="gender">Gender</div>
+    <div class="col-md-2" id="operations">Operations</div>
+</div>
+<div>
+    <br>
+</div>
+<div ng-repeat="student in studentsData" class="row container" id="data">
+    <div class="col-md-1">{{student.rollNo}}</div>
+    <div class="col-md-1">{{student.name}}</div>
+    <div class="col-md-2">{{student.email}}</div>
+    <div class="col-md-2">{{student.date}}</div>
+    <div class="col-md-1">{{student.age}}</div>
+    <div class="col-md-1">{{student.isMale}}</div>
+    <div class="col-md-2">
+        <button ng-click="deleteStudent(student.rollNo)" class="btn-danger">Delete</button>
+        <button ng-click="editStudent(student.rollNo)" class="btn-info">Edit</button>
+    </div>
+</div>
+<style>
+    #dataDisplay {
+        color: blue;
+        background-color: bisque;
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: -2%;
+    }
+
+    #data {
+        color: #f8f8ff;
+        background-color: #2f4f4f;
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+    }
+</style>

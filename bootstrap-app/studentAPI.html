@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            getData();
+            function getData() {
+                var url = "http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/";
+                $.ajax({
+                    url: url, beforeSend: spinner, success: function (result) {
+                        $("#div1").html(result);
+                        var len = result.length;
+                        $("#total").html("Total students : " + len);
+                        document.getElementById("table1").innerHTML = "";
+
+                        addTableData(result, len);
+                        console.log(len);
+
+                    },
+                    error: function (xhr, status, errorMessage) {
+                    },
+                    complete: function () {
+                        var image = $("#spin");
+                        $(image).css("display", "none");
+                    }
+                });
+                function addTableData(result, len) {
+                    for (var i = 0; i < len; i++) {
+                        document.getElementById("table1").innerHTML 
+                        += "<tr><td>" + result[i].rollNo 
+                        + "</td><td>" + result[i].name 
+                        + "</td><td>" + result[i].age 
+                        + "</td><td>" + result[i].email 
+                        + "</td><td>" + result[i].date 
+                        + "</td><td>" + result[i].isMale 
+                        + "</td><td><button id='button' class='btn btn-primary' value=" 
+                        + result[i].rollNo + ">Delete</button></td><td><button class='btn btn-info' value=" 
+                        + result[i].rollNo + ">Edit</button></td></tr>";
+
+                    }
+
+                }
+                $(document).on("click", ".btn.btn-primary", function () {
+                    console.log($(this).val());
+                    $.ajax({
+                        url: url + '/' + ($(this).val()),
+                        type: "delete",
+                        success: getData
+                    })
+                })
+                /*/$(document).on("click", ".btn.btn-info", function () {
+                    var id =$(this).val();
+                    $("#form").show();
+                    $("#update").show();
+
+                    $('#update').click(function(){
+                    var rollNo_ = $("#rollNo").val();
+                    var name_ = $("#name").val();
+                    var age_ = $("#age").val();
+                    var email_ = $("#email").val();
+                    var date_ = $("#date").val();
+                    var isMale_ = $('input[name=gender]:checked').val();
+                    var url = "http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/";
+
+                    data={
+                            rollNo: rollNo_,
+                            name: name_,
+                            age: age_,
+                            email: email_,
+                            date: date_,
+                            isMale: isMale_
+                        },
+
+                    console.log("inside");
+                    $.ajax({
+                        url: url + '/' + ($(this).val()),
+                        type: "put",
+                        data,
+                        success: getData
+
+                    })
+                })
+
+                }
+
+                )*/
+            }
+
+
+
+            $("#submit").click(function () {
+                var rollNo_ = $("#rollNo").val();
+                var name_ = $("#name").val();
+                var age_ = $("#age").val();
+                var email_ = $("#email").val();
+                var date_ = $("#date").val();
+                var isMale_ = $('input[name=gender]:checked').val();
+                var url = "http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/";
+
+                console.log("inside");
+
+
+                if (validateForm()) {
+                    console.log("validated");
+
+                    console.log(rollNo_ + " " + name_ + " " + age_ + " " + email_ + " " + date_ + " " + isMale_ + " ");
+                    $.post(url,
+                        {
+                            rollNo: rollNo_,
+                            name: name_,
+                            age: age_,
+                            email: email_,
+                            date: date_,
+                            isMale: isMale_
+                        },
+                        function (status) {
+                            alert("\nStatus: " + status);
+                        });
+                    //getData();
+                }
+            });
+            function validateForm() {
+                var flag = true;
+                $(".takeInput").each(function () {
+                    console.log(flag);
+                    if ($(this).val() === '') {
+                        $(this).css("background-color", "red");
+                        flag = false;
+
+                    }
+                });
+                return flag;
+
+            }
+            function spinner() {
+                var image = $("#spin");
+                $(image).attr('src', "loader.gif").css({ "height": "80px", "width": "80px" });
+            }
+            $(document).on("click", ".btn.btn-info", function () {
+                var id = $(this).val()
+                console.log($(this).val());
+
+                $(document).on("click", "#update", function () {
+                    console.log("inside update")
+                    
+                    var rollNo_ = $("#rollNo").val();
+                    var name_ = $("#name").val();
+                    var age_ = $("#age").val();
+                    var email_ = $("#email").val();
+                    var date_ = $("#date").val();
+                    var isMale_ = $('input[name=gender]:checked').val();
+                    var url = "http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/";
+                    
+                    student = {
+                        rollNo: rollNo_,
+                        name: name_,
+                        age: age_,
+                        email: email_,
+                        date: date_,
+                        isMale: isMale_
+                    }
+                    
+
+                    $.ajax({
+                        method: "PUT",
+                        url: url +"/"+ student.rollNo,
+                        data: student,
+                        beforeSend: function () {
+                        },
+                        success: function (student) {
+                        },
+                        function(xhr, status, errormsg) {
+                        },
+                        complete: function () {
+                            
+                            getData();
+                        }
+                    });
+                })
+
+            });
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div>
+        <h2>Studdent Details</h2>
+    </div>
+    <div class="">
+
+        <form class="form-basic  col-md-4" id="form">
+            Roll no :
+            <input type="number" class="takeInput form-control " placeholder="Eg : 114" id="rollNo" />
+
+            <br> Name :
+            <input type="text" class="takeInput form-control " placeholder="Eg : Pratik Chaurasia" id="name" />
+
+            <br> Age :
+            <input type="number" class="takeInput form-control  " placeholder="Eg : 18" id="age" />
+
+            <br> Email :
+            <input type="email" class="takeInput form-control " placeholder="Eg : pratik@gmail.com" id="email" />
+
+            <br> date :
+            <input type="date" class="takeInput form-control " id="date" />
+
+            <br> IsMake ? : Male
+            <input type="radio" class="takeInput form-control " id="male" value="true" name="gender" />
+            <br>Female
+            <input type="radio" class="takeInput form-control " id="female" value="false" name="gender" />
+            <br>
+            <button type="submit" class='btn btn-primary' id="submit">Submit</button>
+            <button type="submit" class='btn btn-primary' id="update" hidden>update</button>
+
+            <img id="spin"></img>
+            <br>
+
+        </form>
+        <br>
+        <div id="div1"></div>
+        <div>
+            <h1 id="total"></h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <table class="table table">
+            <tbody id="table1">
+                <thead>
+                    <tr>
+                        <th>Roll NO </th>
+                        <th>Name </th>
+                        <th>Age </th>
+                        <th>Email </th>
+                        <th>Date </th>
+                        <th>IsMale? </th>
+                        <th>Delete </th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+            </tbody>
+
+        </table>
+    </div>
+</body>
+
+</html>

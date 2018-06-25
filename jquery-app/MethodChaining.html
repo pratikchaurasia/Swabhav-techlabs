@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .btn:hover {
+            background-image: none;
+            background-color: #ff00ff;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var button = $("button");
+            var heading = $("#heading");
+            
+            button.click(function () {
+                heading.css("color", "red")
+                    .fadeOut(2000)
+                    .fadeIn(2000);
+            });
+            heading.hover(function () {
+                heading.text("Thanks For saving me").css("color", "green");
+            });
+            button.hover(function () {
+                button.css("color", "blue");
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1 id="heading">I dont want to Die save me!!!</h1>
+
+    <button class "btn">Click to let me die</button>
+
+</body>
+
+</html>

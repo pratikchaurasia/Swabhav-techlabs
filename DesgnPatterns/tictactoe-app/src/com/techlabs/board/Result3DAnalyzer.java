@@ -9,10 +9,6 @@ public class Result3DAnalyzer implements IResultAnalyzer{
 		cell = board.getAllCell();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.techlabs.board.IResultAnalyzer#result()
-	 */
-
 	@Override
 	public Result result(){
 		if(win()){
@@ -26,43 +22,34 @@ public class Result3DAnalyzer implements IResultAnalyzer{
 		}
 			
 	}
-	/* (non-Javadoc)
-	 * @see com.techlabs.board.IResultAnalyzer#win()
-	 */
-	@Override
+	
 	public boolean win(){
 		if(checkHorizontal()==true||checkVertical()==true||checkDiagonal()==true){
 			return true;
 		}
 		return false;
 	}
-	/* (non-Javadoc)
-	 * @see com.techlabs.board.IResultAnalyzer#checkHorizontal()
-	 */
+	
 	@Override
 	public boolean checkHorizontal(){
-		for(int i=0;i<2;i++){
+		for(int i=0;i<3;i++){
 			if(cell[i][0].getMark()!=Mark.Empty&&cell[i][0].getMark()==cell[i][1].getMark()&&cell[i][1].getMark()==cell[i][2].getMark()){
 					return true;
 			}
 		}
 		return false;
 	}
-	/* (non-Javadoc)
-	 * @see com.techlabs.board.IResultAnalyzer#checkVertical()
-	 */
+	
 	@Override
 	public boolean checkVertical(){
-		for(int i=0;i<2;i++){
+		for(int i=0;i<3;i++){
 			if(cell[0][i].getMark()!=Mark.Empty&&cell[0][i].getMark()==cell[1][i].getMark()&&cell[1][i].getMark()==cell[2][i].getMark()){
 					return true;
 			}
 		}
 		return false;
 	}
-	/* (non-Javadoc)
-	 * @see com.techlabs.board.IResultAnalyzer#checkDiagonal()
-	 */
+	
 	@Override
 	public boolean checkDiagonal(){
 		if (cell[0][0].getMark() != Mark.Empty
@@ -77,9 +64,7 @@ public class Result3DAnalyzer implements IResultAnalyzer{
 			return false;
 		}
 	}
-	/* (non-Javadoc)
-	 * @see com.techlabs.board.IResultAnalyzer#draw()
-	 */
+	
 	@Override
 	public boolean draw(){
 		if(board.isFull()){

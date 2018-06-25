@@ -1,0 +1,35 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<section>
+        <table class="table table">
+                <tbody id="table1">
+                    <thead>
+                        <tr>
+                            <th>Roll NO </th>
+                            <th>Name </th>
+                            <th>Age </th>
+                            <th>Email </th>
+                            <th>Date </th>
+                            <th>IsMale? </th>
+                            <th>Delete </th>
+                            <th>Edit </th>
+                        </tr>
+                        <tr ng-repeat="val in result" ng-style="{'background-color':(val.isMale==true)? '#E8E8E8':'pink'}">
+                            <td>{{val.rollNo}}</td>
+                            <td>{{val.name}}</td>
+                            <td>{{val.age}}</td>
+                            <td>{{val.email}}</td>
+                            <td>{{val.date | date}}</td>
+                            <td >{{val.isMale | gender  }}</td>
+                            <td>
+                                <button id='button' class='btn btn-primary' value="{{val.rollNo}}" ng-controller="deleteCtrl" ng-click="deleteStudent(val.rollNo)">Delete</button>
+                            </td>
+                            <td>
+                                <button class='btn btn-info' ng-click="studentUpdate(val.rollNo)" value=" {{val.rollNo}} ">Edit</button>
+                            </td>
+                        </tr>
+                        </tr>
+                    </thead>
+                </tbody>
+    
+            </table>
+</section>

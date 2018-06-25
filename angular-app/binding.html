@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.js"></script>
+</head>
+<body>
+        <script>
+                angular.module('myApp', [])
+                    .controller('myCtrl', function($scope) {
+                    $scope.id = 101;
+                    $scope.name = "Pratik";
+                    $scope.city = "Vasai";    
+                });
+        </script>
+        <div ng-app="myApp" ng-controller="myCtrl">
+                ID: <input type="number" value='{{id}}' >
+                <h1>{{id}}<br></h1>
+                Name: <input type="text" ng-model="name">
+                <h1>{{name}}<br></h1>
+                role: <input type="text" ng-model="city">
+                <h1>{{city}}<br></h1>
+                
+                
+                
+        </div>
+</body>
+</html>

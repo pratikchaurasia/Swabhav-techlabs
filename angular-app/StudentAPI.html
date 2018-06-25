@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap-app/bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        angular.module('studentApi', []).controller("studentController",["$scope","dataservice", function ($scope,dataservice) {
+
+            $scope.search = function () {
+                dataservice.getData().then(function (r) {
+                    $scope.result = r.data;
+                    console.log($scope.result);
+                });
+            };
+            $scope.deleteStudent = function (student) {
+                dataservice.removeStudent(student).then(function (r) {
+                    $scope.search();
+                });
+            };
+            function clearInput() {
+                $scope.rollNo = null;
+                $scope.name = "";
+                $scope.age = null;
+                $scope.email = null;
+                $scope.date = "";
+                $scope.ismale = null;
+            }
+            $scope.studentAdd = function () {
+                var rollNo = $scope.rollNo;
+                var name = $scope.name;
+                var age = $scope.age;
+                var email = $scope.email;
+                var date = $scope.date;
+                var isMale = false;
+                if ($scope.isMale) {
+                    var isMale = true;
+                }
+
+                var student = {
+                    rollNo,
+                    name,
+                    age,
+                    email,
+                    date,
+                    isMale
+                }
+                dataservice.addStudent(student).then(function (r) {
+                    $scope.search();
+                })
+
+            };
+            $scope.studentUpdate = function (student) {
+                console.log("inside update");
+                $scope.rollNo = student.rollNo;
+                $scope.name = student.name;
+                $scope.age = student.age;
+                $scope.email = student.email;
+                $scope.date = new Date(student.date);
+
+                if (student.isMale == true)
+                    $scope.isMale = true;
+
+                else {
+                    $scope.isMale = false;
+                }
+                dataservice.updateStudent(student).then(function (r) {
+                    $scope.search();
+                });
+            }
+            clearInput();
+            $scope.search();
+        }]);
+        angular.module('studentApi').factory('dataservice',['$http', function ($http) {
+            var url = "http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/";
+            var obj = {}
+            obj.getData = (function () {
+                return $http.get(url);
+            })
+            obj.removeStudent = (function (studentID) {
+                return $http.delete(url + studentID);
+            })
+            obj.addStudent = (function (student) {
+                return $http.post(url, student);
+            })
+            obj.updateStudent = (function (student) {
+                return $http.post(url, student);
+            })
+            return obj;
+        }]);
+
+    </script>
+</head>
+
+<body ng-app="studentApi">
+    <div id="div1">
+        <h2>Studdent Details</h2>
+    </div>
+    <div ng-controller="studentController">
+        <form name="myForm">
+            Roll no :
+            <input type="number" ng-model="rollNo" id="rollNo">
+            <br>
+            <br> Name :
+            <input type="text" name="name" ng-model="name" class="takeInput" id="name" required>
+            <br>
+
+            <br> Age :
+            <input type="number" ng-model="age" class="takeInput" id="age">
+            <br>
+            <br> Email :
+            <input type="email" ng-model="email" class="takeInput" id="email">
+            <br>
+            <br> date :
+            <input type="date" ng-model="date" class="takeInput" id="date" />
+            <br>
+            <br> IsMale ? : Male
+            <input type="radio" ng-model="isMale" ng-value="true" class="takeInput" name="gender" />Female
+            <input type="radio" ng-model="isMale" ng-value="false" class="takeInput" name="gender" />
+            <br>
+            <br>
+            <button type="submit" id="submit" ng-click="studentAdd()">Submit</button>
+        </form>
+        <br>
+        <img id="spin"></img>
+        <br>
+        <br>
+        <br>
+
+        <div>
+            <h1>Found total student =</h1>
+            <h1 id="total"></h1>
+        </div>
+        <table class="table table">
+            <tbody id="table1">
+                <thead>
+                    <tr>
+                        <th>Roll NO </th>
+                        <th>Name </th>
+                        <th>Age </th>
+                        <th>Email </th>
+                        <th>Date </th>
+                        <th>IsMale? </th>
+                        <th>Delete </th>
+                        <th>Edit </th>
+                    </tr>
+                    <tr ng-repeat="val in result">
+                        <td>{{val.rollNo}}</td>
+                        <td>{{val.name}}</td>
+                        <td>{{val.age}}</td>
+                        <td>{{val.email}}</td>
+                        <td>{{val.date | date}}</td>
+                        <td>{{val.isMale}}</td>
+                        <td>
+                            <button id='button' class='btn btn-primary' value="{{val.rollNo}}" ng-click="deleteStudent(val.rollNo)">Delete</button>
+                        </td>
+                        <td>
+                            <button class='btn btn-info' ng-click="studentUpdate(val)" value=" {{val.rollNo}} ">Edit</button>
+                        </td>
+                    </tr>;
+                    </tr>
+                </thead>
+            </tbody>
+
+        </table>
+    </div>
+</body>
+
+</html>

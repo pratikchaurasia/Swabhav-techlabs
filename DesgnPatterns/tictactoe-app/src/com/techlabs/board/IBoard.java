@@ -10,4 +10,10 @@ public interface IBoard {
 
 	public abstract Boolean isFull();
 
+	public abstract int getRow(int cellNo);
+
+	public abstract int getColumn(int cellNo);
+
+	
+
 }

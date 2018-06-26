@@ -1,12 +1,15 @@
 package com.techlabs.contacts.model;
 
+import java.util.UUID;
+
 public class Contact {
-	
+	private String id;
 	private String name;
 	private String email;
 	private String number;
 	
 	public Contact(String name, String email, String number) {
+		this.id=UUID.randomUUID().toString();
 		this.name = name;
 		this.email = email;
 		this.number = number;
@@ -22,6 +25,10 @@ public class Contact {
 	
 	public String getNumber() {
 		return this.number;
+	}
+	
+	public String getID() {
+		return this.id;
 	}
 	
 	public void setName(String name){

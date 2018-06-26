@@ -1,0 +1,33 @@
+<web-app>  
+<display-name>filter-app</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+<servlet>  
+<servlet-name>s1</servlet-name>  
+<servlet-class>com.techlabs.filter.HelloServlet</servlet-class>  
+</servlet>  
+  
+<servlet-mapping>  
+<servlet-name>s1</servlet-name>  
+<url-pattern>/servlet1</url-pattern>  
+</servlet-mapping>  
+  
+<filter>  
+<filter-name>f1</filter-name>  
+<filter-class>com.techlabs.filter.MyFilter</filter-class>  
+</filter>  
+   
+<filter-mapping>  
+<filter-name>f1</filter-name>  
+<url-pattern>/servlet1</url-pattern>  
+</filter-mapping>  
+  
+  
+</web-app>

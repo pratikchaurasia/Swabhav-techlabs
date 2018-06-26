@@ -13,40 +13,71 @@
 </head>
 <body>
 	<h1 align="center" class="jumbotron">Contact Details</h1>
+	<div class="col-md-11">
+		<form action="logout" method="get">
+			<%
+				String username = (String) session.getAttribute("userName");
+				if (username != null) {
+			%>
+			<a style="float: right" href="/contact-app/logout">Logout</a>
+			<a style="float: right"><%=username%></a>
+			
+			<%}else{%>
+					<a style="float: right">Guest</a>
+			<%}%>
+			
+
+		</form>
+	</div>
 	<div class="col-md-6">
+
 		<%
 			if ((List<Contact>) request.getAttribute("contacts") != null) {
-				out.println("true");
 		%>
 		<table class="table table-hover">
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Email</th>
 					<th>Number</th>
+					<th>Edit</th>
 				</tr>
 			</thead>
 			<%
 				List<Contact> contactList = (List<Contact>) request
-								.getAttribute("contacts");
-				for (Contact contact : contactList) {
+							.getAttribute("contacts");
+					for (Contact contact : contactList) {
 			%>
 			<tr>
+				<td><%=contact.getID()%></td>
 				<td><%=contact.getName()%></td>
 				<td><%=contact.getEmail()%></td>
 				<td><%=contact.getNumber()%></td>
+				<td><button id='button' class='btn btn-primary'
+						value="<%=contact.getID()%>"
+						onclick="location.href='editContacts?id=<%=contact.getID()%>';">Edit</button></td>
 			</tr>
 			<%
 				}
 			%>
 		</table>
 		<%
-			}else{
+			} else {
 		%>
 		<h1>Please Add Contact no Contacts to Display</h1>
 		<%
 			}
 		%>
+
+		<div>
+			<form action="addContacts" method="get">
+				<input type="submit" value="Add" class="btn btn-success"><br>
+			</form>
+
+		</div>
 	</div>
+
+
 </body>
 </html>

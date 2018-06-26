@@ -1,7 +1,6 @@
-package com.techlabs.beer.web;
+package com.techlabs.contacts.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.techlabs.beer.model.BeerExpert;
+import com.techlabs.contacts.model.LoginService;
 
 /**
- * Servlet implementation class BeerSelect
+ * Servlet implementation class LoginController
  */
-@WebServlet("/hello")
-public class BeerSelect extends HttpServlet {
+@WebServlet("/login")
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BeerSelect() {
+    public LoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,23 +32,9 @@ public class BeerSelect extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String c=request.getParameter("color");
-		
-		BeerExpert be=new BeerExpert();
-		List<String> brands=be.getBrands(c);
-		//System.out.println("inside");
-		//response.setContentType("text/html");
-		//PrintWriter out=response.getWriter();
-		//out.println("Beer Selection advise <br>");
-		
-		//Iterator it = result.iterator();
-		//while (it.hasNext()){
-			//out.println("<br> try :"+it.next());
-		//}
-		request.setAttribute("styles", brands);
-		RequestDispatcher view=request.getRequestDispatcher("result.jsp");
+		RequestDispatcher view = request
+				.getRequestDispatcher("/WEB-INF/login.jsp");
 		view.forward(request, response);
-		
 	}
 
 	/**
@@ -56,6 +42,22 @@ public class BeerSelect extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String username=request.getParameter("user");
+		String password=request.getParameter("pwd");
+		
+		
+		LoginService service=LoginService.getInstance();
+		Boolean isValid=service.checkLogin(username,password);
+		if(isValid){
+			HttpSession session=request.getSession();
+			session.setAttribute("userName", username);
+			//session.setAttribute("password", password);
+			System.out.println("Login Successful");
+			response.sendRedirect("contacts");
+		}
+		
+		
+		
 	}
 
 }

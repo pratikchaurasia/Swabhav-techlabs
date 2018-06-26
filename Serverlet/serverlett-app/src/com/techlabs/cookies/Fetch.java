@@ -1,4 +1,4 @@
-package com.techlabs.serverlett;
+package com.techlabs.cookies;
 
 import java.io.IOException;
 import java.io.PrintWriter;

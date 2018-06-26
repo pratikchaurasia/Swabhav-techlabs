@@ -1,4 +1,4 @@
-package com.techlabs.contacts.web;
+package com.techlabs.contacts.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,15 +18,15 @@ import com.techlabs.contacts.model.ContactService;
 /**
  * Servlet implementation class ContactServerlet
  */
-@WebServlet("/contactController")
-public class ContactController extends HttpServlet {
+@WebServlet("/contacts")
+public class DisplayController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ContactService service = new ContactService();
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ContactController() {
+	public DisplayController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,12 +38,13 @@ public class ContactController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		ContactService service = ContactService.getInstance();
 		response.setContentType("text/html");
 
 		List<Contact> contactList = service.getContacts();
 		request.setAttribute("contacts", contactList);
 		RequestDispatcher view = request
-				.getRequestDispatcher("displayContacts.jsp");
+				.getRequestDispatcher("/WEB-INF/displayContacts.jsp");
 		view.forward(request, response);
 
 	}
@@ -55,18 +56,7 @@ public class ContactController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
 		
-		if (request.getParameter("name") != null
-				&& request.getParameter("email") != null
-				&& request.getParameter("number") != null) {
-			
-			String name = request.getParameter("name");
-			String email = request.getParameter("email");
-			String number = request.getParameter("number");
-			service.addContact(name, email, number);
-			response.sendRedirect("Display.html");
-		}
 	}
 
 }

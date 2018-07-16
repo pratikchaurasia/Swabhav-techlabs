@@ -11,10 +11,10 @@ public class Product {
 	static {
 		TotalNoOfid=10000;
 	}
-	public Product(String name,double price, double discountPercent){
+	public Product(String name,double price ){
 		this.name=name;
 		this.price=price;
-		this.discountPercent=discountPercent;
+		//this.discountPercent=discountPercent;
 		id=generateId();
 	}
 	public int generateId(){

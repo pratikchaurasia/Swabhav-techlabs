@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+		<action name="" class="com.techlabs.actions.HomeAction">
+			<result name="success">
+				index.html
+			</result>
+		</action>
+
+		<action name="home" class="com.techlabs.actions.HomeAction">
+			<result name="success">
+				/view/home.jsp
+			</result>
+		</action>
+		<action name="browse" class="com.techlabs.actions.BrowseAction">
+			<result name="success">
+				/view/browse.jsp
+			</result>
+		</action>
+		<action name="add" class="com.techlabs.actions.StudentsAction">
+			<result name="input">
+				/view/addStudent.jsp
+			</result>
+			<result name="success">/view/addStudent.jsp</result>
+		</action>
+		<action name="addStudents" class="com.techlabs.actions.AddStudentAction"
+			method="executeAdd">
+			<result name="input" >
+				
+					/view/addStudent.jsp
+				
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					students
+				</param>
+			</result>
+		</action>
+		<action name="students" class="com.techlabs.actions.StudentsAction">
+			<result name="success">
+				/view/students.jsp
+			</result>
+		</action>
+		<action name="session" class="com.techlabs.actions.SessionAction">
+			<result name="success">
+				/view/session.jsp
+			</result>
+		</action>
+		
+	</package>
+</struts>

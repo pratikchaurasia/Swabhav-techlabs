@@ -24,9 +24,6 @@ public class TransactionService {
 	public TransactionService() {
 		transactionList = new ArrayList<Transaction>();
 
-		// contactList.add(new
-		// Contact("pratik","pratik@gmail.com","7507587701"));
-
 	}
 
 	public List<Transaction> getTransactions(String user) {
@@ -37,9 +34,15 @@ public class TransactionService {
 		return null;
 	}
 
-	public Boolean transaction(String user, String type, String amount) throws IOException, SQLException {
-		if (repo.transaction(user, type, amount)) {
-			return true;
+	public Boolean transaction(String user, String type, String amount)
+			throws Exception {
+		try {
+
+			if (repo.transaction(user, type, amount)) {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
 		}
 		return false;
 	}

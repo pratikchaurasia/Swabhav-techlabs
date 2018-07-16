@@ -57,10 +57,16 @@ public class TransactionController extends HttpServlet {
 			flag = service.transaction(user,type,amount);
 			System.out.println("Transaction Successful");
 			response.sendRedirect("account");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}  catch (Exception e) {
+			//response.sendRedirect("transaction");
+			String message=e.getMessage();
+			System.out.println(message);
+			request.setAttribute("message",message);
+			RequestDispatcher view = request
+					.getRequestDispatcher("/WEB-INF/transaction.jsp");
+			view.forward(request, response);
 		}
+		
 		
 	}
 

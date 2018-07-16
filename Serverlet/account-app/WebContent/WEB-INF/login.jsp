@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../index.jsp" />
@@ -17,7 +19,10 @@
 			<b>Username : <input type="text" class="form-group" name="user">
 				<br> Password :
 			</b><input type="password" class="form-group" name="pwd"> <br>
-			<input type="submit" class="btn btn-success" value="Login">
+			
+			<Button type="submit" class="btn btn-primary">
+				<i class="fas fa-registered"></i>Login
+			</Button>
 		</form>
 	</div>
 </body>

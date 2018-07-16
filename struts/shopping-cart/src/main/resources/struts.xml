@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+		<action name="" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				home.html
+			</result>
+		</action>
+		<action name="products" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/product.jsp
+			</result>
+		</action>
+		<action name="add" class="com.techlabs.action.AddToCartAction" method="addToCart">
+			<result name="success" type="redirect">
+				products
+			</result>
+			<result name="login" type="redirect">
+				login
+			</result>
+		</action>
+		<action name="remove" class="com.techlabs.action.RemoveAction" method="remove">
+			<result name="success" type="redirect">
+				products
+			</result>
+		</action>
+		<action name="checkout" class="com.techlabs.action.CheckoutAction" >
+			<result name="success">
+				/view/order.jsp
+			</result>
+		</action>
+		<action name="login" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="log_in" class="com.techlabs.action.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					products
+				</param>
+			</result>
+			<result name="input">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="logout" class="com.techlabs.action.LoginAction" method="logout">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					products
+				</param>
+			</result>
+			</action>
+	</package>
+</struts>

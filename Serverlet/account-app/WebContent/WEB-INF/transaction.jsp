@@ -1,3 +1,4 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="com.techlabs.model.Transaction"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -20,6 +21,8 @@
 		<h1 align="center" class="jumbotron">Transaction</h1>
 	</div>
 	<div class="container">
+	
+
 		<form action="transaction" method="post">
 			<input type="radio" name="type" value="D" required />Deposit
 			<br><input type="radio" name="type" value="W" />Withdraw
@@ -28,6 +31,9 @@
 			<input type="submit" class="btn btn-success" value="submit">
 
 		</form>
+		<%if(request.getAttribute("message")!=null){%>
+		<h6 style=color:red><%=request.getAttribute("message")%></h6>
+	<%} %>
 	</div>
 
 </body>

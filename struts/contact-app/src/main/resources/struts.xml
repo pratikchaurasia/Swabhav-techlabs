@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+		<action name="" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				home.html
+			</result>
+		</action>
+		<action name="contacts" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/displayContacts.jsp
+			</result>
+		</action>
+		<action name="add" class="com.techlabs.action.AddAction">
+			<result name="success">
+				/view/Add.jsp
+			</result>
+			<result name="login" type="redirect">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="addContacts" class="com.techlabs.action.AddAction" method="executeadd">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					contacts
+				</param>
+			</result>
+		</action>
+		<action name="edit" class="com.techlabs.action.EditAction">
+			<result name="success">
+				/view/Edit.jsp
+			</result>
+			<result name="login" type="redirect">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="editContacts" class="com.techlabs.action.EditAction" method="edit">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					contacts
+				</param>
+			</result>
+		</action>
+		<action name="login" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="log_in" class="com.techlabs.action.SessionAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					contacts
+				</param>
+			</result>
+			<result name="input">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="logout" class="com.techlabs.action.SessionAction" method="logout">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					contacts
+				</param>
+			</result>
+			</action>
+	</package>
+</struts>

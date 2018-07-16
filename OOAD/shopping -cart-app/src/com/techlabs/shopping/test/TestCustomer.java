@@ -11,9 +11,9 @@ import com.techlabs.shopping.Product;
 public class TestCustomer {
 	public static void main(String args[]){
 		
-		Product prd1=new Product("pen", 10, 20);
-		Product prd2=new Product("pencil", 5, 20);
-		Product prd3=new Product("Eraser", 3, 15);
+		Product prd1=new Product("pen", 10);
+		Product prd2=new Product("pencil", 5);
+		Product prd3=new Product("Eraser", 3);
 		
 		
 		LineItem listItem1=new LineItem(prd1, 10);

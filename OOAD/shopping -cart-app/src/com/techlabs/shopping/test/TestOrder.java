@@ -9,8 +9,8 @@ import com.techlabs.shopping.Product;
 public class TestOrder {
 	public static void main(String args[]){
 		
-		Product prd1=new Product("pen", 10, 20);
-		Product prd2=new Product("pencil", 5, 20);
+		Product prd1=new Product("pen", 10);
+		Product prd2=new Product("pencil", 5);
 		
 		LineItem l1=new LineItem(prd1, 10);
 		LineItem l2=new LineItem(prd2, 15);

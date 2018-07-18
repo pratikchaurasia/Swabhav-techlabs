@@ -32,10 +32,10 @@
 			class="collapse navbar-collapse navbar-inverse justify-content-right"
 			id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link" href="index.jsp">Home<i
+				<a class="nav-item nav-link" href="home">Home<i
 					class="fas fa-home"></i></a> <a class="nav-item nav-link"
 					href="register">Register</a>
-	
+				<div class="navbar-nav justify-content-end">
 					<%
 						String username = (String) session.getAttribute("userName");
 						if (username != null) {
@@ -55,7 +55,7 @@
 					<%
 						}
 					%>
-			
+				</div>
 			</div>
 		</div>
 	</div>

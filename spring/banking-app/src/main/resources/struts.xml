@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+		<action name="" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/home.jsp
+			</result>
+		</action>
+		<action name="home" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/home.jsp
+			</result>
+		</action>
+		<action name="register" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/register.jsp
+			</result>
+		</action>
+		<action name="registerUser" class="com.techlabs.action.RegisterAction" method="register">
+			<result name="success">
+				/view/home.jsp
+			</result>
+			<result name="input">
+				/view/register.jsp
+			</result>
+		</action>
+		<action name="login" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="log_in" class="com.techlabs.action.LoginAction">
+			<result name="success" type="redirect">
+					passbook
+			</result>
+			<result name="admin" type="redirect">
+					portal
+			</result>
+			<result name="input">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="logout" class="com.techlabs.action.LoginAction" method="logout">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					home
+				</param>
+			</result>
+		</action>
+		<action name="passbook" class="com.techlabs.action.PassbookAction">
+			<result name="success">
+				/view/passbook.jsp
+			</result>
+		</action>
+		<action name="checkAccount" class="com.techlabs.action.PassbookAction" method="passbook">
+			<result name="success">
+				/view/passbook.jsp
+			</result>
+		</action>
+		<action name="transaction" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/transaction.jsp
+			</result>
+		</action>
+		<action name="transaction_" class="com.techlabs.action.TransactionAction">
+			<result name="success" type="redirect">
+				passbook
+			</result>
+			<result name="input">
+				/view/transaction.jsp
+			</result>
+		</action>
+		<action name="portal" class="com.techlabs.action.AdminPortalAction">
+			<result name="success">
+				/view/admin/admin.jsp
+			</result>
+		</action>
+		<action name="status" class="com.techlabs.action.ChangeStatusAction">
+			<result name="success" type="redirect">
+				portal
+			</result>
+		</action>
+		<action name="remove" class="com.techlabs.action.RemoveUserAction">
+			<result name="success" type="redirect">
+				portal
+			</result>
+		</action>
+	</package>
+</struts>

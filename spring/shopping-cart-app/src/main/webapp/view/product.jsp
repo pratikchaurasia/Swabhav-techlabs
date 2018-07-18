@@ -83,7 +83,7 @@
 				</thead>
 				<s:iterator value="lineItem" var="item" status="incr">
 					<tr>
-						<td><s:property value="#item.id" /></td>
+						<td><s:property value="#incr.index+1" /></td>
 						<td><s:property value="#item.Product.name" /></td>
 						<td><s:property value="#item.Product.price" /></td>
 						<td><s:property value="quantity" /></td>

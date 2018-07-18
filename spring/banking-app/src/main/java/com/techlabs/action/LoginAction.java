@@ -9,14 +9,14 @@ import org.omg.PortableInterceptor.SUCCESSFUL;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.techlabs.service.CartService;
+import com.techlabs.service.AccountService;
 
 public class LoginAction extends ActionSupport implements SessionAware {
 	String name, password;
 	private Map<String, Object> userSession;
-	
+
 	@Autowired
-	private CartService service;
+	private AccountService service;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -26,6 +26,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String execute() {
 		userSession.put("login", "true");
 		userSession.put("userName", name);
+		if (service.getRole().equals("A")) {
+			return "admin";
+		}
 		return "success";
 	}
 
@@ -41,13 +44,21 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			password = ServletActionContext.getRequest().getParameter(
 					"password");
 
-			if (!service.checkUser(name, password)) {
+			if (service.checkUser(name, password)) {
+				if (service.checkLocked(name)) {
+					addFieldError("password",
+							"Ooops your Account seems to be to be Locked !");
+				}
+			} else {
+				if(!service.checkAttempts(name)){
+					addFieldError("password",
+							"Too many Falied Attempts..!!! Your Account is Locked ");
+				}else{
 				addFieldError("password",
 						"Either Username or password is wrong");
-			}else{
-				//System.out.println(service.getCustomer().getName());
-				userSession.put("customer", service.getCustomer());
+				}
 			}
+
 		}
 
 	}

@@ -1,3 +1,6 @@
+<%@page import="com.techlabs.entity.LineItem"%>
+<%@page import="com.techlabs.entity.Orders"%>
+<%@page import="com.techlabs.entity.Customer"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -11,8 +14,21 @@
 	<div style="text-align: center;">
 		<h1 class="jombotron">Order payement</h1>
 
-			<h2>Order Cost : </h2> 
-				<s:property value="orderCost" />
+		<%if (request.getSession().getAttribute("customer") != null) {
+					Customer customer = (Customer) session.getAttribute("customer"); %>
+				<h1> Customer name : <%=customer.getName()%></h1>	
+				<h1> Orders Placed : <%=customer.getOrders().size()%></h1>	
+				
+				<%for (Orders o : customer.getOrders()) {%>
+					<h1> Orders price : <%=o.getTotalPrice()%></h1>
+					<%for (LineItem i : o.getItems()) {%>
+						<h1> Product Name : <%=i.getProduct().getName()%></h1>
+						<h1> Product Price : <%=i.getProduct().getPrice()%></h1>
+	
+					<%	}		
+					}
+				}
+				 %>
 
 	</div>
 </body>

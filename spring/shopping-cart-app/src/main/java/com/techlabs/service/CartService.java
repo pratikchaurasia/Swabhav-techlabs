@@ -10,6 +10,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.techlabs.entity.Customer;
 import com.techlabs.entity.LineItem;
 import com.techlabs.entity.Orders;
 import com.techlabs.entity.Product;
@@ -24,11 +25,25 @@ public class CartService {
 	private List<Product> productList;
 
 	private Set<LineItem> lineItem = new HashSet<>();
-	private List<Orders> orderList;
+	private Set<Orders> orders;
+	
+	private Customer customer;
+	private Orders order;
 
 	public Set<LineItem> getLineItem() {
 		return lineItem;
 	}
+	
+	
+	public Set<Orders> getOrders() {
+		return orders;
+	}
+
+
+	public void setOrders(Set<Orders> orders) {
+		this.orders = orders;
+	}
+
 
 	public void setLineItem(Set<LineItem> lineItem) {
 		this.lineItem = lineItem;
@@ -48,6 +63,7 @@ public class CartService {
 		item.setQuantity(quantity);
 		item.calculateItemCost();
 		lineItem.add(item);
+		//item.setOrder(order);
 	}
 
 	public Product getByID(UUID id) {
@@ -59,16 +75,25 @@ public class CartService {
 		item.setTotalCost(item.calculateItemCost());
 	}
 
-	public double getOrderCost() {
+	public void saveOrderDetails(Customer c) {
 		Date date = new Date();
-		Orders order =new Orders();
+		order =new Orders();
+		orders=new HashSet<>();
 		order.setDate(date);
+		
+		for (LineItem item:lineItem){
+			item.setOrder(order);
+		}
 		order.setItems(lineItem);
-		return order.checkoutPrice();
+		order.checkoutPrice();
+		order.setCustomer(c);
+		orders.add(order);
+		c.setOrders(orders);
+		repo.saveOrder(c);
+		lineItem.clear();
 	}
 
 	public void addOrder(LineItem item, Date date) {
-		//orderList.add(new Order(lineItem, date));
 
 	}
 
@@ -98,5 +123,42 @@ public class CartService {
 				return;
 			}
 		}
+	}
+	private Set<Customer> users;
+
+	public CartService() {
+		users = new HashSet();
+		//addUser("pratik", "123");
+	}
+
+	public void addUser(String name, String password) {
+		Customer c1=new Customer();
+		c1.setName(name);
+		c1.setPassword(password);
+		users.add(c1);
+	}
+	
+	public boolean checkUser(String name, String password) {
+		for(Customer c : repo.getCustomers()) {
+			if(name.equals(c.getName()) && password.equals(c.getPassword())){
+				setCustomer(c);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private void setCustomer(Customer c) {
+		this.customer=c;
+		
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+	public Customer getHistory(Customer c) {
+		return repo.history(c);
 	}
 }

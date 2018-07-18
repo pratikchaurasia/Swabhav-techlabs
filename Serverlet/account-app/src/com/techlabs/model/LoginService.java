@@ -18,7 +18,7 @@ public class LoginService {
 
 	public LoginService() {
 		users = new HashMap<String, String>();
-		//addUser("pratik", "123");
+		addUser("pratik", "123");
 	}
 
 	public static LoginService getInstance() {

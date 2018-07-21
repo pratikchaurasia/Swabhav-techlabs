@@ -56,4 +56,14 @@
 			</result>
 			</action>
 	</package>
+	<package extends="struts-default,json-default" name="ajax-package">
+		<action class="com.techlabs.action.DisplayAction" method="getCost"
+			name="getTotalCost">
+			<result type="json">
+				<param name="noCache">true</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="root">totalCost</param>
+			</result>
+		</action>
+	</package>
 </struts>

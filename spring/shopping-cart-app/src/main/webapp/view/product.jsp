@@ -14,8 +14,25 @@
 	crossorigin="anonymous">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#productList').on('change', function() {
+			var formInput = $('#itemForm').serialize();
+			$.getJSON('getTotalCost', formInput, function(data) {
+				$('#totalCost').val(data);
+			});
+		});
+		$('#quantity').on('change keyup', function() {
+			var formInput = $('#itemForm').serialize();
+			$.getJSON('getTotalCost', formInput, function(data) {
+				$('#totalCost').val(data);
+			});
+		});
+	});
+</script>
 </head>
 <body>
+
 
 	<h1 align="center" class="jumbotron">Select Product</h1>
 	<div class="col-md-11">
@@ -38,8 +55,8 @@
 		</form>
 	</div>
 	<div class="container">
-		<s:form action="add" class="col-md-8" method="post">
-			<select name="selected" class="form-control">
+		<s:form action="add" class="col-md-8" method="post" id="itemForm">
+			<select name="selected" class="form-control" id="productList">
 				<s:iterator value="productList">
 					<option value="<s:property value="id" />"><s:property
 							value="name" /></option>
@@ -48,9 +65,16 @@
 			<br>
 			<label>Quantity : </label>
 			<input type="number" placeholder="Enter Number of Products"
-				name="quantity" class="form-control" required />
+				name="quantity" class="form-control" required min="0" id="quantity" />
 			<br>
-			<input type="hidden" name="display" />
+			<div class="col-sm-4 input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Price</span>
+				</div>
+				<input type="text" id="totalCost" name="totalCost" readonly
+					class="form-control" value="<s:property value="totalCost"/>" />
+			</div>
+
 			<div style="text-align: center;">
 				<input type="submit" id="submit" onclick="myfunction()"
 					value="Add To Cart" class="btn btn-primary" style="float:;" />

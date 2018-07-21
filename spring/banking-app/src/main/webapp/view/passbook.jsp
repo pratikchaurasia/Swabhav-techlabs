@@ -48,7 +48,7 @@
 		<div align="center">
 			<input type="button" class="btn btn-primary btn-lg"
 				value="Make a Transaction" onclick="location.href='transaction';"><br><br>
-				<button onclick="exportTableToCSV('members.csv')" class="btn btn-success">Export To CSV <i class="fas fa-file-export"></i></button>
+				<button onclick="location.href='export';" class="btn btn-success">Export To CSV <i class="fas fa-file-export"></i></button>
 		</div>
 	</div>
 

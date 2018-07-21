@@ -1,15 +1,12 @@
-package com.techlabs.entity;
+package com.techlabs.entities;
 
-import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -29,6 +26,7 @@ public class User {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Account account;
+	
 	
 	public String getRole() {
 		return role;

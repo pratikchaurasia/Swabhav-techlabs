@@ -1,4 +1,4 @@
-package com.techlabs.entity;
+package com.techlabs.entities;
 
 import java.util.Set;
 import java.util.UUID;
@@ -27,9 +27,16 @@ public class User {
 	private String isActive="Active";
 	private int loginAttempts;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Account account;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Account> accounts;
 	
+	
+	public Set<Account> getAccounts() {
+		return accounts;
+	}
+	public void setAccounts(Set<Account> accounts) {
+		this.accounts = accounts;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -42,12 +49,7 @@ public class User {
 	public void setUserId(UUID user_id) {
 		this.userId = user_id;
 	}
-	public Account getAccount() {
-		return account;
-	}
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+
 	public String getUsername() {
 		return username;
 	}

@@ -21,6 +21,7 @@ public class CartService {
 	@Autowired
 	private CartRepository repo;
 
+	
 	private LineItem item;
 	private List<Product> productList;
 
@@ -29,6 +30,12 @@ public class CartService {
 	
 	private Customer customer;
 	private Orders order;
+
+	public CartService() {
+		users = new HashSet();
+		//addUser("pratik", "123");
+		System.out.println("Service Created");
+	}
 
 	public Set<LineItem> getLineItem() {
 		return lineItem;
@@ -126,11 +133,7 @@ public class CartService {
 	}
 	private Set<Customer> users;
 
-	public CartService() {
-		users = new HashSet();
-		//addUser("pratik", "123");
-	}
-
+	
 	public void addUser(String name, String password) {
 		Customer c1=new Customer();
 		c1.setName(name);

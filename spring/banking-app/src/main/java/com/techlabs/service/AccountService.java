@@ -1,12 +1,22 @@
 package com.techlabs.service;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +33,14 @@ public class AccountService {
 	private BankRepository repo;
 	private Set<Transaction> transactions = new HashSet<>();
 	private String role;
+
+	public Set<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(Set<Transaction> transactions) {
+		this.transactions = transactions;
+	}
 
 	public void addNewAccount(User user, double balance) {
 		Date date = new Date();
@@ -49,9 +67,11 @@ public class AccountService {
 
 	public Set<Transaction> passbook(String firstName) {
 		Account acc = repo.getAccountHistory(firstName);
-		System.out.println(acc.getAccountId());
-		return acc.getTransaction();
+		transactions = acc.getTransaction();
+		return transactions;
 	}
+
+	
 
 	public boolean makeTransaction(String firstName, String type, double amount) {
 		return repo.transaction(firstName, type, amount);
@@ -86,16 +106,17 @@ public class AccountService {
 		UUID uid = UUID.fromString(id);
 		repo.remove(uid);
 	}
-	public boolean checkAttempts(String userName){
-		if(repo.checkAttempts(userName)){
+
+	public boolean checkAttempts(String userName) {
+		if (repo.checkAttempts(userName)) {
 			return true;
 		}
 		return false;
 	}
 
-	public boolean verifyCaptcha(String gRecaptchaResponse)  {
+	public boolean verifyCaptcha(String gRecaptchaResponse) {
 		try {
-			if(VerifyRecaptcha.verify(gRecaptchaResponse)){
+			if (VerifyRecaptcha.verify(gRecaptchaResponse)) {
 				return true;
 			}
 		} catch (IOException e) {

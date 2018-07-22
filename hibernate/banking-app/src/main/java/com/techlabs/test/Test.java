@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.management.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,32 +28,33 @@ public class Test {
 		Set<com.techlabs.entities.Transaction> transactions=new HashSet<>();
 		Set<Account> accounts=new HashSet<>();
 		
-		User user=new User();
-		user.setUsername("pratik");
-		user.setPassword("111");
-		user.setRole("U");
-		
-		user.setIsActive("Active");
-		user.setLoginAttempts(0);
-		
-		acc.setBalance(1500);
-		acc.setType("S");
-		acc.setUser(user);
-		accounts.add(acc);
-		user.setAccounts(accounts);
-		
-		trans.setAcc(acc);
-		trans.setAmount(acc.getBalance());
-		trans.setDate(new Date());
-		trans.setType("D");
-		
-		transactions.add(trans);
-		acc.setTransaction(transactions);
+//		User user=new User();
+//		user.setUsername("pratik");
+//		user.setPassword("111");
+//		user.setRole("U");
+//		
+//		user.setIsActive("Active");
+//		user.setLoginAttempts(0);
+//		
+//		acc.setBalance(1500);
+//		acc.setType("S");
+//		acc.setUser(user);
+//		accounts.add(acc);
+//		user.setAccounts(accounts);
+//		
+//		trans.setAcc(acc);
+//		trans.setAmount(acc.getBalance());
+//		trans.setDate(new Date());
+//		trans.setType("D");
+//		
+//		transactions.add(trans);
+//		acc.setTransaction(transactions);
 		
 		try {
 			txn = session.beginTransaction();
-			session.save(user);
-
+			org.hibernate.Query query=session.createQuery("from account where username='pratik'");
+			Account acco=(Account) query.uniqueResult();
+			acco.setRecipeint(recipeint);
 			txn.commit();
 
 		} catch (HibernateException ex) {

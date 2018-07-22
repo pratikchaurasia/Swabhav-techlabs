@@ -1,4 +1,4 @@
-package com.techlabs.entities;
+package com.techlabs.entity;
 
 
 import java.util.Date;

@@ -1,12 +1,15 @@
-package com.techlabs.entities;
+package com.techlabs.entity;
 
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -23,11 +26,19 @@ public class User {
 	private String role="U";
 	private String isActive="Active";
 	private int loginAttempts;
+	private String email;
+	private String validated;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Account account;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Account> accounts;
 	
 	
+	public Set<Account> getAccounts() {
+		return accounts;
+	}
+	public void setAccounts(Set<Account> accounts) {
+		this.accounts = accounts;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -40,12 +51,7 @@ public class User {
 	public void setUserId(UUID user_id) {
 		this.userId = user_id;
 	}
-	public Account getAccount() {
-		return account;
-	}
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -69,6 +75,18 @@ public class User {
 	}
 	public void setLoginAttempts(int loginAttempts) {
 		this.loginAttempts = loginAttempts;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getValidated() {
+		return validated;
+	}
+	public void setValidated(String validated) {
+		this.validated = validated;
 	}
 	
 

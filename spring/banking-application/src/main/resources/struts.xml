@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="checkLogin"
+				class="com.techlabs.interceptors.LoginInterceptor"></interceptor>
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="checkLogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="login" type="redirect">login</result>
+		</global-results>
+
+		<action name="" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/home.jsp
+			</result>
+		</action>
+		<action name="home" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/home.jsp
+			</result>
+		</action>
+		<action name="register" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/register.jsp
+			</result>
+		</action>
+		<action name="registerUser" class="com.techlabs.action.RegisterAction"
+			method="register">
+			<result name="success">
+				/view/home.jsp
+			</result>
+			<result name="input">
+				/view/register.jsp
+			</result>
+		</action>
+		<action name="login" class="com.techlabs.action.DisplayAction">
+			<result name="success">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="log_in" class="com.techlabs.action.LoginAction">
+			<result name="success" type="redirect">
+				home
+			</result>
+			<result name="input">
+				/view/login.jsp
+			</result>
+		</action>
+		<action name="logout" class="com.techlabs.action.LoginAction"
+			method="logout">
+			<result name="success" type="redirectAction">
+				<param name="actionName">
+					home
+				</param>
+			</result>
+		</action>
+		<action name="verify" class="com.techlabs.action.ValidateAction">
+			<result name="success" type="redirect">
+				home
+			</result>
+		</action>
+		<action name="create" class="com.techlabs.action.CreateNewAccountAction">
+			<result name="success" >
+				/view/newAccount.jsp
+			</result>
+		</action>
+		<action name="createAccount" class="com.techlabs.action.CreateNewAccountAction" method="create">
+			<result name="success" type="redirect">
+				home
+			</result>
+		</action>
+		<action name="passBook" class="com.techlabs.action.PassbookAction">
+			<result name="success" >
+				/view/passbook.jsp
+			</result>
+		</action>
+		<action name="passbook" class="com.techlabs.action.PassbookAction" method="passbook">
+			<result name="success">
+				/view/passbook.jsp
+			</result>
+		</action>
+	</package>
+</struts>
+		

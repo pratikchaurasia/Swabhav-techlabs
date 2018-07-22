@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script
@@ -37,18 +37,18 @@
 					String username = (String) session.getAttribute("userName");
 					if (username != null) {
 				%>
-				<a class="nav-item nav-link " style="float: right" href="passbook">Passbook</a>
+				<a class="nav-item nav-link " style="float: right" href="create">Create Account</a>
+				<a class="nav-item nav-link " style="float: right" href="passBook">Passbook</a>
 				<a class="nav-item nav-link " style="float: right" href="logout">Logout</a>
-				<a class="nav-item nav-link " style="float: right"><%=username %> <i
-					class="fas fa-user-alt"></i></a>
+				<a class="nav-item nav-link " style="float: right"><%=username%>
+					<i class="fas fa-user-alt"></i></a>
 
 				<%
 					} else {
 				%>
 				<a class="nav-item nav-link " href="login">Login <i
 					class="fas fa-sign-in-alt"></i>
-				</a> 
-				<a class="nav-item nav-link " style="float: right">Guest <i
+				</a> <a class="nav-item nav-link " style="float: right">Guest <i
 					class="fas fa-user-alt"></i></a>
 				<%
 					}
@@ -57,5 +57,16 @@
 		</div>
 	</div>
 	</nav>
+	<div>
+		<%
+			if (username != null) {
+		%>
+		Account Type : <input type="radio" name="type" value="S" required />Saving
+		<input type="radio" name="type" value="C" />Current
+
+		<%
+			}
+		%>
+	</div>
 </body>
 </html>
